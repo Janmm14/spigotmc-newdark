@@ -1,0 +1,761 @@
+/* ==UserStyle==
+@name           SpigotMC NewDark
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    SpigotMC.org NewDark mode userstyle
+@preprocessor   less
+@author         Janmm14
+@var range dim "Dim spigotmc orange" [1, 0.4, 1, 0.025]
+==/UserStyle== */
+
+@-moz-document url-prefix("https://spigotmc.org"), url-prefix("https://www.spigotmc.org") {
+    html {
+        background: black;
+        &:before {
+            content: @dim;
+        }
+    }
+
+    body {
+        background: black;
+        color: #d3d3d3;
+    }
+    
+    a[href]:hover {
+        color: #d4d4d4;
+    }
+
+    #navigation {
+        .navTabs {
+            .navTab.selected {
+                .navLink {
+                    background-color: #1b1e22;
+
+                    &::after, &::before {
+                        bottom: -4px;
+                        background: transparent;
+                        border-bottom: 4px solid #1b1e22;
+                    }
+
+                    &::before {
+                        border-radius: 0 0 100% 0;
+                        border-right: 4px solid #1b1e22;
+                    }
+
+                    &::after {
+                        border-radius: 0 0 0 100%;
+                        border-left: 4px solid #1b1e22;
+                    }
+                }
+            }
+        }
+    }
+    .navTabs {
+        .navTab.selected {
+            .tabLinks {
+                background: #1b1e22;
+                border-color: #30353b;
+
+                a {
+                    color: #ddd;
+                    text-shadow: 0 1px #555;
+                }
+            }
+        }
+    }
+    #userBar .navTabs .navLink, #userBar .navTabs .SplitCtrl {
+        color: #ddd;
+    }
+    .Menu {
+        border-width: 2px;
+        border-left-color: #444;
+        border-right-color: #444;
+        border-bottom-color: #444;
+        &.tabMenu {
+            border-left-color: #efb61c;
+            border-right-color: #efb61c;
+            border-bottom-color: #efb61c;
+        }
+        .primaryContent {
+            background: rgba(38, 38, 38, 0.96);
+            border-color: #262626;
+        }
+        .secondaryContent {
+            background: rgba(30, 30, 30, 0.96);
+            border-bottom: 1px solid transparent;
+        }
+    }
+    .textCtrl {
+        background-color: black;
+        color: #bfbfbf;
+        border-color: #444;
+    }
+    #QuickSearch .primaryControls .uix_icon {
+        color: #efb61c;
+        background: #444;
+        text-shadow: 0 1px rgba(239, 182, 28,.25);
+    }
+    #QuickSearch .primaryControls:focus-within {
+        .uix_icon {
+            line-height: 32px;
+            border: 1px solid #efb61c;
+            border-right-color: transparent;
+        }
+    }
+    #QuickSearch .formPopup .secondaryControls {
+        background: #111;
+        border-color: #333;
+        box-shadow: 4px 4px 10px -2px rgba(255,255,255,.15);
+        color: #d3d3d3;
+    }
+    #QuickSearch .button:not(.primary) {
+        background-color: #333;
+        color: #eee;
+    }
+    .navTabs .navTab.PopupClosed .navLink {
+        color: #eee;
+    }
+    .sidebar .section .primaryContent h3, .sidebar .section .secondaryContent h3, .profilePage .mast .section.infoBlock h3, .breadcrumb, a.callToAction span, .xenOverlay .heading {
+        box-shadow: inset 0 1px rgba(255,255,255,.4),inset 0 -1px rgba(0,0,0,.2);
+        color: #eee;
+    }
+    .breadcrumb .crust a.crumb {
+        color: #eee;
+    }
+    .sidebar .section .primaryContent h3, .sidebar .section .secondaryContent h3, .profilePage .mast .section.infoBlock h3, .breadcrumb, a.callToAction span, .xenOverlay .heading {
+        filter: brightness(@dim);
+    }
+    #navigation .navTabs, .breadcrumb, .uix_breadCrumb_toggleList li.toggleList_item {
+        filter: brightness(@dim);
+    }
+    #logoBlock .spigot_colorOverlay {
+        filter: brightness(@dim);
+    }
+    .spigot_headerReadAboutWrapper {
+        filter: brightness(calc( 1 / @dim));
+    }
+    .sidebar .section .secondaryContent {
+        box-shadow: 0 0 3px rgba(255,255,255,.75);
+    }
+    .sidebar .section {
+        border-radius: 6px;
+    }
+    .sidebar .section.funbox {
+        overflow: initial;
+    }
+    .primaryContent {
+        background: #222;
+        border-bottom-color: #444;
+    }
+    .secondaryContent {
+        background: #222;
+        border-bottom-color: #444;
+        a {
+            color: #bbb;
+        }
+        a[href]:not(.username):hover {
+            color: #eee;
+        }
+    }
+    .mainContainer .mainContent, .mainContainer_noSidebar {
+        background-color: #222;
+        border-color: #444;
+    }
+    
+    .tabs {
+        border-bottom-color: #777;
+        
+        li a, &.noLinks li {
+            color: #eee;
+            background: #111;
+            border-color: #444;
+            border-bottom: 0 none;
+            border-radius: 0;
+        }
+        li:hover a, &.noLinks li:hover {
+            color: #fff;
+            background-color: #333;
+        }
+        li.active a, &.noLinks li.active {
+            color: #eee;
+            background-color: #777;
+        }
+        li:first-child a, &.noLinks li:first-child {
+            border-top-left-radius: 3px;
+        }
+        li:last-child a, &.noLinks li:last-child {
+            border-top-right-radius: 3px;
+        }
+    }
+    
+    .textHeading, .xenForm .sectionHeader {
+        border-bottom-color: #333;
+    }
+    .messageSimple {
+        border-bottom-color: #555;
+    }
+    .resourceUpdate {
+        border-top: 0 none;
+        
+        .likesSummary {
+            background-color: #333;
+            border-color: #444;
+            color: inherit;
+        }
+    }
+    .sidebar > .callToAction {
+        margin: 10px auto;
+    }
+    
+    .PageNav a {
+        background-color: #333;
+        border-color: #444;
+        &:hover {
+            background-color: #444;
+            border-color: #555;
+            color: #efb61c;
+        }
+        
+        &.currentPage:hover {
+            background-color: #3f6e8d;
+            border-color: #3a6581;
+            color: #fff;
+        }
+        &.PageNavPrev, &.PageNavNext {
+            background-color: #303030;
+            color: #666;
+            &:hover {
+                background-color: #333;
+                color: #bbb;
+            }
+        }
+    }
+    footer {
+        background: #111;
+        .uix_socialLink a {
+            color: #000;
+            text-shadow: 1px 1px #777;
+            transition: all 0.15s 0s ease;
+            
+            &:hover {
+                color: #fff;
+                text-shadow: -1px -1px #333;
+            }
+        }
+    }
+    .footer {
+        color: inherit;
+        a, a:visited {
+            color: inherit;
+        }
+        .choosers a {
+            background-color: #222;
+            border-color: #444;
+            &:hover {
+                background-color: #333;
+                border-color: #555;
+            }
+        }
+    }
+    #Sponsors3::before {
+        color: inherit;
+    }
+    .subHeading {
+        background-color: #1a1a1a;
+        border-color: #555;
+        color: #bbb;
+    }
+    .xenOverlay .section {
+        border: 0 none;
+        box-shadow: 0 0 5px rgba(127,127,127,1);
+    }
+    .xenOverlay .heading {
+        background: #ed8106 -moz-linear-gradient(top,rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 100%);
+        background: #ed8106 -webkit-gradient(linear,left top,left bottom,color-stop(0%,url(rgba.php?r=255&g=255&b=255&a=51)),color-stop(100%,rgba(255,255,255,0)));
+        background: #ed8106 -webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(255,255,255,0.2)),color-stop(100%,rgba(255,255,255,0)));
+        _filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FFFFFF,endColorstr=#33FFFFFF);
+        background: #ed8106 -webkit-linear-gradient(top,rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 100%);
+        background: #ed8106 -o-linear-gradient(top,rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 100%);
+        background: #ed8106 -ms-linear-gradient(top,rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 100%);
+        background: #ed8106 linear-gradient(to bottom,rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 100%);
+        filter: brightness(0.8);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33ffffff',endColorstr='#00ffffff',GradientType=0 ) brightness(0.8);
+    }
+    .chooserColumns li a {
+        border: 1px solid transparent;
+        &:hover {
+            background-color: #333;
+            border: 1px solid #444;
+        }
+    }
+    .sectionFooter {
+        background-color: #1a1a1a;
+    }
+    
+    #jumpMenu .blockLinksList ul, #jumpMenu .nodeList li.d0 {
+        border-color: #555;
+    }
+    .xenOverlay #jumpMenu .nodeList {
+        border-color: #555;
+    }
+
+    .navPopup {
+        .listItem {
+            border-color: #888;
+        }
+        .PopupItemLinkActive {
+            color: #eee;
+            &:hover {
+                background-color: #444;
+            }
+        }
+    }
+    .alertsPopup a {
+        color: #aaa;
+    }
+    .Menu .sectionFooter {
+        background-color: rgba(10, 10, 10, .9);
+    }
+    .sectionFooter, .sectionFooter a {
+        color: #bbb;
+    }
+    
+    .sectionMain {
+        background: initial;
+        border-color: #444;
+    }
+    
+    .button {
+        background-color: #555;
+        color: #d9d9d9;
+    }
+    .hasJs .bbCodeSpoilerText {
+        background-color: #000;
+        border-color: #666;
+    }
+    .bbCodeBlock {
+        background-color: black;
+        border-color: #666;
+        .type {
+            background-color: #1a1a1a;
+            color: #d3d3d3;
+            border-color: #666;
+        }
+        .code {
+            color: #eee;
+            scrollbar-color: #333 #070707;
+            > * {
+                filter: invert(1);
+            }
+            a span {
+                filter: invert(1);
+            }
+            span[style="color: #003399;"] {
+                color: hsl(220, 100%, 65%) !important;
+            }
+            background-color: #040404;
+            background-image: -webkit-repeating-linear-gradient(top,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 26px,rgba(255,255,255,.045) 26px,rgba(255,255,255,.045) 52px);
+            background-image: -moz-repeating-linear-gradient(top,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 26px,rgba(255,255,255,.045) 26px,rgba(255,255,255,.045) 52px);
+            background-image: -ms-repeating-linear-gradient(top,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 26px,rgba(255,255,255,.045) 26px,rgba(255,255,255,.045) 52px);
+            background-image: -o-repeating-linear-gradient(top,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 26px,rgba(255,255,255,.045) 26px,rgba(255,255,255,.045) 52px);
+            background-image: repeating-linear-gradient(top,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 26px,rgba(255,255,255,.045) 26px,rgba(255,255,255,.045) 52px);
+        }
+    }
+    
+    .alert-warning {
+        background-color: hsl(50.4, 80.6%, 20%);
+        border-color: hsl(40.4, 82.1%, 28%);
+        color: hsl(38, 40.1%, 78.6%);
+    }
+    .alert-info {
+        background-color: hsl(200, 65.2%, 20%);
+        border-color: hsl(190.2, 65.4%, 25%);
+        color: hsl(199.8, 49%, 90%);
+    }
+    .warningNotice {
+        background-color: hsl(0, 79.8%, 40%) !important;
+        border-color: hsl(5.6, 63.4%, 70%) !important;
+    }
+    span[style="color: #E8E8E8"] {
+        color: #777 !important;
+    }
+    span[style="color: #000000"] {
+        color: inherit !important;
+    }
+    img[data-url="http://i.imgur.com/dKF4pZx.png"],
+    img[data-url="http://i.imgur.com/sVTy6M0.png"],
+    img[data-url="http://i.imgur.com/3F228wf.png"] {
+        filter: invert(1);
+    }
+    img[src="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_s.png"],
+    img[src="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_male_s.png"],
+    img[src="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_female_s.png"] {
+        background-color: rgba(0, 0, 0, .2);
+        filter: invert(1);
+    }
+    
+    
+    .nodeList .node.level_1 {
+        box-shadow: 0 0 3px rgba(255,255,255,.5);
+    }
+    .nodeList .categoryStrip {
+        background-color: #222;
+        color: inherit;
+        box-shadow: inset 0 1px rgba(255,255,255,.25);
+        text-shadow: 0 1px rgba(255,255,255,.5);
+        .nodeTitle {
+            color: #eee;
+            a {
+                color: inherit;
+            }
+        }
+        .nodeDescription {
+            color: inherit;
+        }
+    }
+    .nodeList .categoryForumNodeInfo, .nodeList .forumNodeInfo, .nodeList .pageNodeInfo, .nodeList .linkNodeInfo {
+        background-color: #000;
+        border-color: #444;
+    }
+    .node.level_2 .nodeInfo {
+        border-top-color: #444;
+    }
+    .nodeList .node.level_2:nth-child(2n) .nodeInfo, .nodeList .node.level_2:nth-child(2n) .nodeInfo .nodeLastPost {
+        background-color: #111;
+    }
+    .node .forumNodeInfo .nodeIcon, .node .categoryForumNodeInfo .nodeIcon {
+        background:#6d6d6d url(https://i.imgur.com/7E9f5Ik.png) no-repeat 0 0;
+        background-color: #fff;
+        filter: contrast(1.3) brightness(0.6);
+    }
+    .node .forumNodeInfo.unread .nodeIcon, .node .categoryForumNodeInfo.unread .nodeIcon {
+        background:#efb61c url(https://i.imgur.com/7E9f5Ik.png) no-repeat 0 0;
+        filter: contrast(1.5) hue-rotate(-5deg);
+    }
+    .node .nodeLastPost {
+        background-color: transparent;
+    }
+    .node .unread .nodeText .nodeTitle {
+        color: #ccc;
+    }
+    
+    .dataTable tr.dataRow th {
+        background: #333;
+        border-color: #666;
+        color: #ccc;
+    }
+    .xenForm fieldset, .xenForm .formGroup, .dataTable tr.dataRow td {
+        border-color: #666;
+    }
+    .dataTable .dataRow .dataOptions a.secondaryContent {
+        border-color: #666;
+    }
+    
+    .messageList .message {
+        background-color: #2a2a2a;
+        border-color: #555;
+    }
+    .bbCodeQuote .quoteContainer {
+        background-color: #1a1a1a;
+        .quoteExpand {
+            background: -webkit-linear-gradient(top,rgba(4,4,4,0) 0%,rgb(4,4,4) 80%);
+            background: -moz-linear-gradient(top,rgba(251,251,251,0) 0%,rgb(251,251,251) 80%);
+            background: -o-linear-gradient(top,rgba(251,251,251,0) 0%,rgb(251,251,251) 80%);
+            background: linear-gradient(to bottom,rgba(4,4,4,0) 0%,rgb(4,4,4) 80%);
+        }
+    }
+    .message .dark_postrating.likesSummary, .dark_postrating {
+        background-color: transparent;
+        border-color: #444;
+        color: #bbb;
+    }
+    
+    .messageUserInfo {
+        background-color: #000;
+        border-color: #444;
+    }
+    .messageUserBlock div.avatarHolder {
+        background-color: transparent;
+    }
+    .avatar img, .avatar .img, .avatarCropper {
+        background-color: transparent;
+    }
+    .messageUserBlock h3.userText {
+        background-color: transparent;
+    }
+    .messageUserBlock a.username {
+        color: #bbb;
+        &:hover {
+            color: #eee;
+        }
+    }
+    .messageUserBlock .arrow {
+        border-left-color: #666;
+    }
+    .messageUserBlock .arrow span {
+        border-left-color: #000;
+    }
+    
+    .dark_postrating_detail {
+        background: #222;
+    }
+    .dark_postrating_column {
+        border-color: #555;
+    }
+    
+    .xenOverlay .formOverlay {
+        background-color: #111;
+        border-color: #444;
+        color: #d3d3d3;
+    }
+    .xenOverlay .formOverlay .textCtrl {
+        background-color: #000;
+        border-color: #555;
+        color: #d3d3d3;
+    }
+    
+    .redactor_box {
+        border-color: #666;
+    }
+    .redactor_box .redactor_smilies .secondaryContent {
+        border-color: #666;
+    }
+    .redactor_toolbar {
+        background-color: #222;
+        border-color: #666;
+    }
+    .redactor_toolbar li.redactor_btn_group ul {
+        background-color: #000;
+        border-color: #666;
+    }
+    html .redactor_toolbar li a {
+        color: #aaa;
+        &:hover:not(:active):not(.redactor_act) {
+            border-color: transparent;
+            color: #fff;
+        }
+    }
+    .redactor_dropdown {
+        transform: translateY(-2px);
+        background-color: #000;
+        border-color: #666;
+        box-shadow: 0 2px 5px #555;
+        border-radius: 0px 3px 3px 3px;
+        a {
+            color: #aaa;
+            &:hover {
+                color: #fff;
+                background-color: #222;
+            }
+        }
+    }
+    .redactor_toolbar li a:active, .redactor_toolbar li a.redactor_act {
+        background-color: transparent;
+        border-bottom-color: transparent;
+    }
+    
+    
+    .forum_list .nodeList .nodeList, .forum_view .nodeList, .category_view .nodeList, .watch_forums .nodeList {
+        background: #000;
+        border-color: #666;
+    }
+    .discussionList .sectionHeaders {
+        background-color: #222;
+        border-color: #555;
+        color: #ddd;
+        a {
+            color: #ddd;
+        }
+    }
+    .discussionListItem {
+        background-color: #1a1a1a;
+        border-color: #555;
+        &:nth-child(2n) {
+            background-color: #222
+        }
+    }
+    .discussionList .discussionListItem.sticky {
+        background-color: #17181a;
+        border-color: #555;
+    }
+    .discussionListItem .stats dl {
+        border-color: #888;
+    }
+    
+    
+    #DiscussionListOptionsHandle a {
+        background-color: #111;
+        border-color: #555;
+        color: inherit;
+    }
+    .DiscussionListOptions {
+        border-color: transparent;
+    }
+    
+    .PrefixMenu .PrefixGroup {
+        border-bottom: 0 none;
+    }
+    .PrefixMenu .PrefixOption .prefix.noPrefix {
+        border: 1px solid #555;
+        &:hover {
+            border-color: #666;
+        }
+    }
+    .PrefixMenu .PrefixOption a:hover {
+        &.prefixPurple,
+        &.prefixRed,
+        &.prefixGreen,
+        &.prefixBlue {
+            color: #ccc;
+            filter: brightness(1.2);
+        }
+    }
+    .PrefixMenu .PrefixOption a.prefixPrimary {
+        background-color: black;
+        border-color: #444;
+        &:hover {
+            color: #ccc;
+            border-color: #555;
+        }
+    }
+    .prefix.prefixPrimary {
+        color: #908e8e;
+        background-color: black;
+        border-color: #666;
+        &:not(.PopupOpen):hover {
+            color: #ccc;
+            border-color: #888;
+        }
+    }
+    
+    input.textCtrl.disabled, textarea.textCtrl.disabled, .disabled .textCtrl {
+        background-color: #444;
+        color: #aaa;
+    }
+    
+    .threadListItem {
+        border-color: #555;
+    }
+    
+    .textHeading, .xenForm .sectionHeader {
+        border-bottom-color: #555;
+        color: inherit;
+    }
+    
+    .resourceListMain {
+        background-color: transparent;
+        border-color: #555;
+    }
+    .actionFilterRow {
+        border-color: #555;
+    }
+    .Popup .PopupControl:not(.PopupOpen):hover, .Popup.PopupContainerControl:not(.PopupOpen):hover {
+        color: #fff;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .resourceListItem {
+        background-color: #222;
+        border-color: #555;
+    }
+    .resourceListItem .resourceImage, .resourceListItem .resourceStats {
+        background-color: transparent;
+    }
+    .resourceListSidebar .secondaryContent {
+        background: #111;
+        border: 0 none;
+        box-shadow: 0 0 3px rgba(255,255,255,.5);
+    }
+    .resourceListSidebar h3 {
+        background: #ed8106 -moz-linear-gradient(top,rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 100%);
+        background: #ed8106 -webkit-gradient(linear,left top,left bottom,color-stop(0%,url(rgba.php?r=255&g=255&b=255&a=51)),color-stop(100%,rgba(255,255,255,0)));
+        background: #ed8106 -webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(255,255,255,0.2)),color-stop(100%,rgba(255,255,255,0)));
+        _filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FFFFFF,endColorstr=#33FFFFFF);
+        background: #ed8106 -webkit-linear-gradient(top,rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 100%);
+        background: #ed8106 -o-linear-gradient(top,rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 100%);
+        background: #ed8106 -ms-linear-gradient(top,rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 100%);
+        background: #ed8106 linear-gradient(to bottom,rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 100%);
+        filter: brightness(0.8);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33ffffff',endColorstr='#00ffffff',GradientType=0 ) brightness(0.8);
+        
+        box-shadow: inset 0 1px rgba(255,255,255,.4),inset 0 -1px rgba(0,0,0,.2);
+    }
+    
+    .innerContent .updates ol {
+        border-color: #555;
+    }
+    .innerContent .customResourceFields.aboveInfo {
+        border-color: #555;
+    }
+    .innerContent .rateBlock {
+        background: #1a1a1a;
+        border-color: #555;
+        display: flex;
+        justify-content: center;
+        padding-top: 13px;
+    }
+    .innerContent .rateBlock .rating {
+        position: relative;
+        top: -1px;
+        margin-left: 5px;
+    }
+    .innerContent .rateBlock .Hint {
+        margin-left: 5px;
+        text-align: center;
+    }
+    
+    .resourceListSidebar .avatarList .extraData, .resourceListSidebar .avatarList .extraData a {
+        color: #7f7f7f;
+        &:hover {
+            color: #7f7f7f;
+        }
+    }
+
+    .staffHeading {
+        color: inherit;
+        font-weight: bold;
+    }
+    
+    .username .style20 {
+        color: #86b3a7;
+    }
+    .username .style9 {
+        color: rgb(144, 144, 144);
+    }
+    
+    .profilePage .tabs.mainTabs {
+        background: transparent;
+    }
+    .profilePage .tabs.mainTabs li.active a {
+        background-color: #222;
+    }
+    .profilePage .tabs.mainTabs li a:hover {
+        background-color: #333;
+    }
+    .profilePage .mainProfileColumn {
+        border-color: #666;
+    }
+    .profilePage .mast .section.infoBlock {
+        border-color: #666;
+    }
+    .dark_postrating_member, .dark_postrating_member td {
+        border-color: #666;
+    }
+    .profilePage .mast .sectionFooter {
+        border-color: #666;
+    }
+    .secondaryContent a {
+        color: #fff;
+    }
+    .searchResult .snippet a {
+        color: inherit;
+    }
+    .resourceUpdate .cost, .resourceListItem .main .cost {
+        background-color: #000;
+        border-color: #666;
+        color: #bbb;
+        padding-left: 2px;
+    }
+    .eventList li, html .searchResult {
+        border-color: #888;
+    }
+}
