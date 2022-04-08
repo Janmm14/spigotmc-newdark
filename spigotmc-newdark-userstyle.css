@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/openstyles/stylus
-@version        1.0.3
+@version        1.0.4
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -821,5 +821,23 @@
 
     .xenOverlay .formOverlay .textCtrl option {
         background-color: initial;
+    }
+    .xenPreviewTooltip {
+        background-color: #000;
+        border-color: #666;
+        .arrow {
+            transform: translateY(2px);
+            border-top-color: transparent;
+            span {
+                border-top-color: #666;
+            }
+        }
+    }
+    .previewTooltip .posterDate {
+        border-color: #444;
+    }
+    .discussionListItem .noteRow {
+        background-color: #333;
+        color: inherit;
     }
 }
