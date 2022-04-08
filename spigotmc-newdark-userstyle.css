@@ -1,8 +1,8 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/openstyles/stylus
-@version        1.0.2
-@description    SpigotMC.org NewDark mode userstyle
+@version        1.0.3
+@description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
 @var range dim "Dim spigotmc orange" [1, 0.4, 1, 0.025]
@@ -389,7 +389,10 @@
     }
     img[src="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_s.png"],
     img[src="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_male_s.png"],
-    img[src="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_female_s.png"] {
+    img[src="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_female_s.png"],
+    img[src="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_l.png"],
+    img[src="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_female_l.png"],
+    img[src="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_male_l.png"] {
         background-color: rgba(0, 0, 0, .2);
         filter: invert(1);
     }
