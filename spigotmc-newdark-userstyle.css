@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/openstyles/stylus
-@version        1.0.1
+@version        1.0.2
 @description    SpigotMC.org NewDark mode userstyle
 @preprocessor   less
 @author         Janmm14
@@ -816,4 +816,7 @@
         background-color:#222;
     }
 
+    .xenOverlay .formOverlay .textCtrl option {
+        background-color: initial;
+    }
 }
