@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/openstyles/stylus
-@version        1.0.4
+@version        1.0.5
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -816,7 +816,7 @@
         }
     }
     .xenOverlay .sortable-placeholder {
-        background-color:#222;
+        background-color: #222;
     }
 
     .xenOverlay .formOverlay .textCtrl option {
@@ -840,4 +840,11 @@
         background-color: #333;
         color: inherit;
     }
+    .navPopup .listPlaceholder {
+        background-color: rgba(38, 38, 38, 0.96);
+    }
+    .navPopup .listPlaceholder ol.secondaryContent.Unread {
+        background-color: hsl(194, 25%, 26%);
+    }
+
 }
