@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/openstyles/stylus
-@version        1.0.5
+@version        1.0.6
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -846,5 +846,9 @@
     .navPopup .listPlaceholder ol.secondaryContent.Unread {
         background-color: hsl(194, 25%, 26%);
     }
-
+    
+    .messageList .newMessagesNotice {
+        background: #444;
+        border-color: #777;
+    }
 }
