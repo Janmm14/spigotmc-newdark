@@ -1,11 +1,12 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
-@namespace      github.com/openstyles/stylus
-@version        1.0.6
+@namespace      github.com/Janmm14/spigotmc-newdark
+@version        1.1.0
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
 @var range dim "Dim spigotmc orange" [1, 0.4, 1, 0.025]
+@var checkbox nomargin "Less margin on spigotmc home news feed" 1
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://spigotmc.org"), url-prefix("https://www.spigotmc.org") {
@@ -850,5 +851,25 @@
     .messageList .newMessagesNotice {
         background: #444;
         border-color: #777;
+    }
+    
+    // spigotmc home news feed less margin
+    .sectionMain {
+        & when (@nomargin = 1) {
+            padding: 0;
+        }
+    }
+    .subHeading {
+        & when (@nomargin = 1) {
+            border-color: #444;
+            margin-top: 0;
+            border-top: 0 none;
+            border-radius: 6px 6px 0 0;
+        }
+    }
+    .sectionFooter {
+        & when (@nomargin = 1) {
+            border-radius: 0 0 6px 6px;
+        }
     }
 }
