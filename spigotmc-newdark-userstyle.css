@@ -1,12 +1,13 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.1.1
+@version        1.1.2
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
 @var range dim "Dim spigotmc orange" [1, 0.4, 1, 0.025]
-@var checkbox nomargin "Less margin on spigotmc home news feed" 1
+@var checkbox nomargin "Less margin on spigotmc home news feed and wiki pages" 1
+@var number codeblockrightmargin "Right margin of code blocks (+1)" [141, 1, 1000, 1, 'px']
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://spigotmc.org"), url-prefix("https://www.spigotmc.org") {
@@ -337,6 +338,7 @@
     .bbCodeBlock {
         background-color: black;
         border-color: #666;
+        margin-right: calc(@codeblockrightmargin - 1px);
         .type {
             background-color: #1a1a1a;
             color: #d3d3d3;
@@ -861,13 +863,13 @@
         border-color: #777;
     }
     
-    // spigotmc home news feed less margin
+    /* spigotmc home news feed less margin */
     .sectionMain {
         & when (@nomargin = 1) {
             padding: 0;
         }
     }
-    .subHeading {
+    .sectionMain:not(.wikiPage) .subHeading {
         & when (@nomargin = 1) {
             border-color: #444;
             margin-top: 0;
@@ -882,5 +884,28 @@
     }
     span[style="color: rgb(20, 20, 20)"] {
         color: inherit !important;
+    }
+    
+    .wikiPage {
+        .subHeading {
+            margin: 0;
+        }
+        .tabs {
+            border-bottom: 0 none;
+            
+            &.controlTabs {
+                margin-bottom: -36px;
+
+                /* control tabs rendered from right-to-left so have to swap rounded corners comapred to normal tabs */
+                li:first-child a, &.noLinks li:first-child {
+                    border-top-left-radius: 0px;
+                    border-top-right-radius: 3px;
+                }
+                li:last-child a, &.noLinks li:last-child {
+                    border-top-left-radius: 3px;
+                    border-top-right-radius: 0px;
+                }
+            }
+        }
     }
 }
