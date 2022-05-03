@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.1.0
+@version        1.1.1
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -354,12 +354,15 @@
             span[style="color: #003399;"] {
                 color: hsl(220, 100%, 65%) !important;
             }
+            background-attachment: local;
             background-color: #040404;
-            background-image: -webkit-repeating-linear-gradient(top,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 26px,rgba(255,255,255,.045) 26px,rgba(255,255,255,.045) 52px);
-            background-image: -moz-repeating-linear-gradient(top,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 26px,rgba(255,255,255,.045) 26px,rgba(255,255,255,.045) 52px);
-            background-image: -ms-repeating-linear-gradient(top,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 26px,rgba(255,255,255,.045) 26px,rgba(255,255,255,.045) 52px);
-            background-image: -o-repeating-linear-gradient(top,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 26px,rgba(255,255,255,.045) 26px,rgba(255,255,255,.045) 52px);
-            background-image: repeating-linear-gradient(top,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 26px,rgba(255,255,255,.045) 26px,rgba(255,255,255,.045) 52px);
+            --clr-1: rgba(255,255,255,.015);
+            --clr-2: rgba(255,255,255,.1);
+            background-image: -webkit-repeating-linear-gradient(top,var(--clr-1) 0px,var(--clr-1) 26px,var(--clr-2) 26px,var(--clr-2) 52px);
+            background-image: -moz-repeating-linear-gradient(top,var(--clr-1) 0px,var(--clr-1) 26px,var(--clr-2) 26px,var(--clr-2) 52px);
+            background-image: -ms-repeating-linear-gradient(top,var(--clr-1) 0px,var(--clr-1) 26px,var(--clr-2) 26px,var(--clr-2) 52px);
+            background-image: -o-repeating-linear-gradient(top,var(--clr-1) 0px,var(--clr-1) 26px,var(--clr-2) 26px,var(--clr-2) 52px);
+            background-image: repeating-linear-gradient(180deg,var(--clr-1) 0px,var(--clr-1) 26px,var(--clr-2) 26px,var(--clr-2) 52px);
         }
     }
     
@@ -726,6 +729,9 @@
         color: rgb(144, 144, 144);
     }
     
+    .profilePage .primaryUserBlock .lastActivity {
+        border-top-color: #555;
+    }
     .profilePage .tabs.mainTabs {
         background: transparent;
     }
@@ -745,7 +751,9 @@
         border-color: #666;
     }
     .profilePage .mast .sectionFooter {
-        border-color: #666;
+        border-radius: 0;
+        border-left: 0 none;
+        border-right: 0 none;
     }
     .secondaryContent a {
         color: #fff;
@@ -871,5 +879,8 @@
         & when (@nomargin = 1) {
             border-radius: 0 0 6px 6px;
         }
+    }
+    span[style="color: rgb(20, 20, 20)"] {
+        color: inherit !important;
     }
 }
