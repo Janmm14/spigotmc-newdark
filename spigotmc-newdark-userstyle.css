@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.1.5
+@version        1.1.6
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -918,6 +918,22 @@
 
         li:hover, li.selected {
             background: #333;
+        }
+    }
+    
+    .pollBlock {
+        .questionMark {
+            background: #000;
+            color: inherit;
+        }
+        .question .questionText {
+            color: inherit;
+        }
+        .pollOptions, .pollResults {
+            border-color: #444;
+        }
+        .pollOption label:hover {
+            background: #444;
         }
     }
 }
