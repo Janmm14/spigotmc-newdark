@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.1.7
+@version        1.1.8
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -24,7 +24,13 @@
     }
     
     a[href]:hover {
-        color: #d4d4d4;
+        color: #ccc;
+    }
+    .primaryContent a, .ugc a:link, .ugc a:visited {
+        color: #efb61c;
+    }
+    #AccountMenu ul.links a:hover {
+        color: #efb61c;
     }
 
     #navigation {
@@ -152,11 +158,19 @@
     .secondaryContent {
         background: #222;
         border-bottom-color: #444;
-        a {
-            color: #bbb;
-        }
+        
         a[href]:not(.username):hover {
-            color: #eee;
+            color: #bbb;
+            color: #efb61c;
+        }
+    }
+    .blockLinksList {
+        a, label {
+            color: #fff;
+        }
+        a:hover, a:focus, li.kbSelect a, label:hover, label:focus, li.kbSelect label {
+            color: #bbb;
+            color: #efb61c;
         }
     }
     .mainContainer .mainContent, .mainContainer_noSidebar {
