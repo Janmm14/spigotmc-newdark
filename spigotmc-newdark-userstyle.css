@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.1.10
+@version        1.1.11
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -367,8 +367,15 @@
             > * {
                 filter: invert(1);
             }
+            > *::selection, > *::-webkit-selection, > *::-moz-selection {
+                color: #000;
+                background-color: #127ef9;
+            }
             a span {
                 filter: invert(1);
+                &::selection, &::-webkit-selection, &::-moz-selection {
+                    background-color: #127ef9;
+                }
             }
             span[style="color: #003399;"] {
                 color: hsl(220, 100%, 65%) !important;
