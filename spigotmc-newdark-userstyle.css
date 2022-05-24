@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.1.11
+@version        1.1.12
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -489,6 +489,9 @@
     
     .messageList .message {
         background-color: #2a2a2a;
+        border-color: #555;
+    }
+    .conversation_view .message:first-child, .conversation_view .quickReply {
         border-color: #555;
     }
     .bbCodeQuote .quoteContainer {
