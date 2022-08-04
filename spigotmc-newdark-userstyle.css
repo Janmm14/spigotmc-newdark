@@ -1,12 +1,13 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.1.12
+@version        1.1.13
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
 @var range dim "Dim spigotmc orange" [1, 0.4, 1, 0.025]
 @var checkbox nomargin "Less margin on spigotmc home news feed and wiki pages" 1
+@var checkbox icode_dark "Should inline code [icode] have dark background" 1
 @var number codeblockrightmargin "Right margin of code blocks (+1)" [141, 1, 1000, 1, 'px']
 ==/UserStyle== */
 
@@ -389,6 +390,13 @@
             background-image: -ms-repeating-linear-gradient(top,var(--clr-1) 0px,var(--clr-1) 26px,var(--clr-2) 26px,var(--clr-2) 52px);
             background-image: -o-repeating-linear-gradient(top,var(--clr-1) 0px,var(--clr-1) 26px,var(--clr-2) 26px,var(--clr-2) 52px);
             background-image: repeating-linear-gradient(180deg,var(--clr-1) 0px,var(--clr-1) 26px,var(--clr-2) 26px,var(--clr-2) 52px);
+        }
+    }
+    .BBcodeInlineCode {
+        & when (@icode_dark = 1) {
+            background-color: #000;
+            border-color: #555;
+            color: #eee;
         }
     }
     
@@ -891,6 +899,15 @@
     .messageList .newMessagesNotice {
         background: #444;
         border-color: #777;
+    }
+    body .imageCollection {
+        background: #111;
+        border-color: #444;
+        padding: 10px;
+    }
+    body .imageCollection .textHeading {
+        border-bottom-color: #444;
+        padding: 5px;
     }
     
     /* spigotmc home news feed less margin */
