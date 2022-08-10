@@ -83,6 +83,7 @@
         border-left-color: #444;
         border-right-color: #444;
         border-bottom-color: #444;
+        border-radius: 0 0 10px 10px;
         &.tabMenu {
             border-left-color: #efb61c;
             border-right-color: #efb61c;
@@ -181,7 +182,6 @@
         background-color: #222;
         border-color: #444;
     }
-    
     .tabs {
         border-bottom-color: #777;
         
@@ -430,12 +430,14 @@
     img[src="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_female_s.png"],
     img[src="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_l.png"],
     img[src="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_female_l.png"],
-    img[src="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_male_l.png"] {
+    img[src="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_male_l.png"],
+    span[style*="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_s.png"],
+    span[style*="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_male_s.png"],
+    span[style*="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_female_s.png"]
+	{
         background-color: rgba(0, 0, 0, .2);
         filter: invert(1);
     }
-    
-    
     .nodeList .node.level_1 {
         box-shadow: 0 0 3px rgba(255,255,255,.5);
     }
