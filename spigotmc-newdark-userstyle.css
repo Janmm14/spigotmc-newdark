@@ -697,6 +697,9 @@
         background-color: transparent;
         border-color: #555;
     }
+    .resourceListMain .linkGroup.SelectionCountContainer {
+        margin: 0 11px;
+    }
     .actionFilterRow {
         border-color: #555;
     }
