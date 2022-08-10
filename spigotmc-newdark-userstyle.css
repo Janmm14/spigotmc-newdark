@@ -996,4 +996,12 @@
             color: inherit;
         }
     }
+
+    // SpigotSearchEngine
+	#divSortBox > * {
+		border: 1px solid #555;
+	}
+	.SortByBoxButtonLinkStyle:hover {
+		color: #555 !important;
+	}
 }
