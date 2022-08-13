@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.1.16
+@version        1.1.17
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -435,8 +435,9 @@
     span[style*="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_s.png"],
     span[style*="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_male_s.png"],
     span[style*="//static.spigotmc.org/styles/spigot/xenforo/avatars/avatar_female_s.png"] {
-        background-color: rgba(0, 0, 0, .2);
+        background-color: rgba(0, 0, 0, .5);
         filter: invert(1);
+        --box-shadow-color: rgba(0,0,0,.7) !important;
     }
     img[src="//static.spigotmc.org/styles/spigot/xenresource/resource_icon.png"] {
         filter: invert(75%);
@@ -529,8 +530,11 @@
     .messageUserBlock div.avatarHolder {
         background-color: transparent;
     }
-    .avatar img, .avatar .img, .avatarCropper {
+    .avatar .img, .avatarCropper {
         background-color: transparent;
+    }
+    .avatar img {
+        background-color: rgba(255, 255, 255, .5);
     }
     .messageUserBlock h3.userText {
         background-color: transparent;
@@ -714,6 +718,13 @@
     }
     .resourceListItem .resourceImage, .resourceListItem .resourceStats {
         background-color: transparent;
+    }
+    .resourceListItem .resourceImage .resourceIcon img {
+        background-color: transparent;
+    }
+    .resourceListItem .resourceImage .creatorMini img {
+        --box-shadow-color: rgba(255,255,255,.7);
+        box-shadow: 1px 1px 3px var(--box-shadow-color);
     }
     .resourceListSidebar .secondaryContent {
         background: #111;
