@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.2.1
+@version        1.2.2
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -179,17 +179,18 @@
                         display: flex;
 
                         &::before {
-                        background-image: url("//static.spigotmc.org/img/spigot.png");
-                        background-size: 50px;
-                        background-repeat: no-repeat;
-                        background-position-x: 5px;
-                        background-position-y: 5px;
+                            background-image: url("//static.spigotmc.org/img/spigot.png");
+                            background-size: 50px;
+                            background-repeat: no-repeat;
+                            background-position-x: 5px;
+                            background-position-y: 5px;
                             content: "";
                             display: inline-block;
                             height: 40px;
                             width: 55px;
                             position: static;
                             border: 0 none;
+                            border-radius: 0;
                         }
                     }
                 }
@@ -210,6 +211,7 @@
                             display: none;
                             height: 0px;
                             width: 0px;
+                            border-radius: 0;
                         }
                     }
                 }
