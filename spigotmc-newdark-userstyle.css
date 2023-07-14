@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.2
+@version        1.2.1
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -169,9 +169,9 @@
                     padding-right: 10px;
                     ul li.articles.PopupClosed a.navLink {
                         &:hover {
-                            background: -moz-radial-gradient(circle at 25%, rgba(255, 255, 255, 0.22) 0%, #000 35%);
-                            background: -webkit-radial-gradient(circle at 25%, rgba(255, 255, 255, 0.22) 0%, #000 35%);
-                            background: radial-gradient(circle at 25%, rgba(255, 255, 255, 0.22) 0%, #000 35%);
+                            background: -moz-radial-gradient(circle at 25%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
+                            background: -webkit-radial-gradient(circle at 25%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
+                            background: radial-gradient(circle at 25%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
                         }
                     }
                     ul li.articles a.navLink {
@@ -218,9 +218,9 @@
                 a.navLink {
                     padding-left: 0px;
                     &:hover {
-                        background: -moz-radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #000 35%);
-                        background: -webkit-radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #000 35%);
-                        background: radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #000 35%);
+                        background: -moz-radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
+                        background: -webkit-radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
+                        background: radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
                     }
                 }
                 i.uix_icon-menu {
