@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.2.2
+@version        1.2.3
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -318,10 +318,12 @@
     .primaryContent {
         background: #222;
         border-bottom-color: #444;
+        border-color: #444;
     }
     .secondaryContent {
         background: #222;
         border-bottom-color: #444;
+        border-color: #444;
         
         a[href]:not(.username):hover {
             color: #bbb;
@@ -440,10 +442,70 @@
     #Sponsors3::before {
         color: inherit;
     }
+    .navigationSideBar {
+        > ul {
+            background: transparent;
+            border-color: #444;
+            border-bottom-width: 1px;
+            border: 0 none;
+        }
+        > ul > li.section > ul > li a {
+            border-width: 1px;
+            border-style: none none solid solid;
+        }
+        > ul > li.section > ul > li:last-child a {
+            border-bottom-left-radius: 6px;
+        }
+        > ul > li.section:last-child > ul > li:last-child a {
+            border-top-width: 1px;
+            border-top-style: solid;
+            border-left-width: 1px;
+            border-left-style: solid;
+            border-bottom-width: 1px;
+            border-top-left-radius: 6px;
+        }
+        h4.heading {
+            border-top-left-radius: 6px;
+        }
+        .subHeading {
+            margin-left: 0;
+            border-color: #444;
+            border-style: solid;
+            border-left-width: 1px;
+            border-right-width: 1px;
+            border-right-style: solid;
+            border-top-left-radius: 6px;
+        }
+    }
     .subHeading {
         background-color: #1a1a1a;
         border-color: #555;
         color: #bbb;
+    }
+    .profilePage {
+        .subHeading {
+            border-radius: 6px 6px 0 0;
+            border-width: 1px;
+            border-style: solid;
+        }
+        .mast .section .primaryContent {
+            border-color: #555;
+            border-radius: 0 0 6px 6px;
+            border-width: 0 1px 1px 1px;
+            border-style: solid;
+            table {
+                border: 0 none;
+            }
+        }
+        .mast .followBlocks .section.infoBlock {
+            .secondaryContent {
+                background: transparent;
+            }
+            border-top-width: 0;
+            border-radius: 38px 38px 6px 6px;
+            border: 0 none;
+            box-shadow: inset 0px 0px 0px 1px #555;
+        }
     }
     .xenOverlay .section {
         border: 0 none;
