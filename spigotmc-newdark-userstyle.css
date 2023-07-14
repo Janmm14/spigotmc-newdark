@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.2.4
+@version        1.2.5
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -167,15 +167,13 @@
                 > .pageWidth {
                     padding-left: 0px;
                     padding-right: 10px;
-                    ul li.articles.PopupClosed a.navLink {
-                        &:hover {
-                            background: -moz-radial-gradient(circle at 25%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
-                            background: -webkit-radial-gradient(circle at 25%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
-                            background: radial-gradient(circle at 25%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
+                    ul li.articles.PopupClosed:hover a.navLink {
+                        background: -moz-radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
+                        background: -webkit-radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
+                        background: radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
+                        &::before {
+                            filter: brightness(1.1);
                         }
-                    }
-                    ul li.articles.PopupClosed a.navLink:hover::before {
-                        filter: brightness(1.1);
                     }
                     ul li.articles a.navLink {
                         padding-left: 0px;
@@ -220,8 +218,13 @@
                 }
             }
             #navigation .pageContent .navTabs ul.navLeft li.navTab--navPanelTrigger {
-                &:hover i.uix_icon-menu {
-                    filter: brightness(1.1);
+                &:hover a.navLink {
+                    background: -moz-radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
+                    background: -webkit-radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
+                    background: radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
+                    i.uix_icon-menu {
+                        filter: brightness(1.1);
+                        }
                 }
                 a.navLink {
                     padding-left: 0px;
