@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.2.5
+@version        1.2.6
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -89,7 +89,7 @@
         color: #ddd;
     }
     .Menu {
-        border-width: 2px;
+        border-width: 1px;
         border-left-color: #444;
         border-right-color: #444;
         border-bottom-color: #444;
@@ -550,8 +550,13 @@
         border-color: #555;
     }
 
+    #AccountMenu {
+        -moz-transform: translateX(-1px);
+    }
     .navPopup {
-        -moz-transform: translateX(1px);
+        &#AlertsMenu {
+            -moz-transform: translateX(1px);
+        }
         .listItem {
             border-color: #888;
         }
