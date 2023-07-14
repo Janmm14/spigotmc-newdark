@@ -1,11 +1,13 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.1.18
+@version        1.2
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
 @var range dim "Dim spigotmc orange" [1, 0.4, 1, 0.025]
+@var checkbox black_header "Black header background" 1
+@var checkbox no_header "Remove the header" 1
 @var checkbox nomargin "Less margin on spigotmc home news feed and wiki pages" 1
 @var checkbox icode_dark "Should inline code [icode] have dark background" 1
 @var number codeblockrightmargin "Right margin of code blocks (+1)" [141, 1, 1000, 1, 'px']
@@ -16,6 +18,7 @@
         background: black;
         &:before {
             content: @dim;
+            display: none;
         }
     }
 
@@ -75,6 +78,13 @@
             }
         }
     }
+    #userBar .navTabs {
+        & when (@black_header = 1)  {
+            background: black;
+            border-bottom: 0 none;
+            padding-bottom: 3px;
+        }
+    }
     #userBar .navTabs .navLink, #userBar .navTabs .SplitCtrl {
         color: #ddd;
     }
@@ -90,11 +100,11 @@
             border-bottom-color: #efb61c;
         }
         .primaryContent {
-            background: rgba(38, 38, 38, 0.96);
+            background: rgba(38, 38, 38, 0.9);
             border-color: #262626;
         }
         .secondaryContent {
-            background: rgba(30, 30, 30, 0.96);
+            background: rgba(30, 30, 30, 0.9);
             border-bottom: 1px solid transparent;
         }
     }
@@ -116,9 +126,10 @@
         }
     }
     #QuickSearch .formPopup .secondaryControls {
-        background: #111;
+        background: rgba(17, 17, 17, .95);
+        background-clip: padding-box;
         border-color: #333;
-        box-shadow: 4px 4px 10px -2px rgba(255,255,255,.15);
+        box-shadow: 4px 4px 10px -2px rgba(0,0,0,.9);
         color: #d3d3d3;
     }
     #QuickSearch .button:not(.primary) {
@@ -138,14 +149,160 @@
     .sidebar .section .primaryContent h3, .sidebar .section .secondaryContent h3, .profilePage .mast .section.infoBlock h3, .breadcrumb, a.callToAction span, .xenOverlay .heading {
         filter: brightness(@dim);
     }
-    #navigation .navTabs, .breadcrumb, .uix_breadCrumb_toggleList li.toggleList_item {
+    .breadcrumb, .uix_breadCrumb_toggleList li.toggleList_item {
         filter: brightness(@dim);
+    }
+    #navigation .navTabs {
+        & when (@black_header = 0)  {
+            filter: brightness(@dim);
+        }
+        & when (@black_header = 1)  {
+            background: transparent;
+            box-shadow: none;
+        }
+    }
+
+    & when (@no_header = 1) {
+            #navigation .navTabs {
+                > .pageWidth {
+                    padding-left: 0px;
+                    padding-right: 10px;
+                    ul li.articles.PopupClosed a.navLink {
+                        &:hover {
+                            background: -moz-radial-gradient(circle at 25%, rgba(255, 255, 255, 0.22) 0%, #000 35%);
+                            background: -webkit-radial-gradient(circle at 25%, rgba(255, 255, 255, 0.22) 0%, #000 35%);
+                            background: radial-gradient(circle at 25%, rgba(255, 255, 255, 0.22) 0%, #000 35%);
+                        }
+                    }
+                    ul li.articles a.navLink {
+                        padding-left: 0px;
+                        display: flex;
+
+                        &::before {
+                        background-image: url("//static.spigotmc.org/img/spigot.png");
+                        background-size: 50px;
+                        background-repeat: no-repeat;
+                        background-position-x: 5px;
+                        background-position-y: 5px;
+                            content: "";
+                            display: inline-block;
+                            height: 40px;
+                            width: 55px;
+                            position: static;
+                            border: 0 none;
+                        }
+                    }
+                }
+            }
+        @media(max-width: 800px) {
+            #navigation .navTabs {
+                > .pageWidth {
+                    padding-left: 16px;
+                    padding-right: 16px;
+                    ul li.articles a.navLink {
+                        background-image: none;
+                        background-size: 50px;
+                        background-repeat: no-repeat;
+                        background-position-y: 0;
+
+                        &::before {
+                            content: none;
+                            display: none;
+                            height: 0px;
+                            width: 0px;
+                        }
+                    }
+                }
+            }
+            #navigation .pageContent .navTabs ul.navLeft li.navTab--navPanelTrigger {
+                a.navLink {
+                    padding-left: 0px;
+                    &:hover {
+                        background: -moz-radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #000 35%);
+                        background: -webkit-radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #000 35%);
+                        background: radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #000 35%);
+                    }
+                }
+                i.uix_icon-menu {
+                    padding-left:50px;
+                    background-image: url("//static.spigotmc.org/img/spigot.png");
+                    background-size: 50px;
+                    background-repeat: no-repeat;
+                    background-position-y: 5px;
+                    background-origin: border-box;
+                    
+                    
+                }
+            }
+        }
+        @media(min-width: 1200px) {
+            #header #userBar .navTabs {
+                box-shadow: none;
+            }
+            #header #userBar {
+                display: block;
+                position: absolute;
+                width: 100%;
+                .pagewidth {
+                    position: absolute;
+                }
+                .navTab {
+                    padding-top: 6px;
+                    padding-bottom: 5px;
+                }
+                .navRight {
+                    position: relative;
+                    margin-left: auto;
+                    margin-right: 0;
+                    z-index: 999;
+                }
+            }
+        }
+    }
+    #logoBlock {
+        & when (@no_header = 1) {
+            display: none;
+        }
+    }
+    #logoBlock .pageContent {
+        & when (@black_header = 1)  {
+            background: transparent;
+        }
+        #logo {
+            & when (@black_header = 1)  {
+                background: transparent;
+                position: relative;
+                top: -12px;
+            }
+        }
+    }
+    @media(max-width: 800px) {
+        #logoBlock .pageContent #logo {
+            & when (@black_header = 1)  {
+                position: initial;
+                top: initial;
+            }
+        }
     }
     #logoBlock .spigot_colorOverlay {
-        filter: brightness(@dim);
+        & when (@black_header = 0)  {
+            filter: brightness(@dim);
+        }
+        & when (@black_header = 1)  {
+            background: transparent;
+        }
     }
     .spigot_headerReadAboutWrapper {
-        filter: brightness(calc( 1 / @dim));
+        & when (@black_header = 0)  {
+            filter: brightness(calc( 1 / @dim));
+        }
+        & when (@black_header = 1)  {
+            color: #d3d3d3;
+            background: #393e44;
+            background: #2f3338;
+            border-top: solid 1px rgba(255,255,255,.2);
+            border-bottom: 3px solid #25282d;
+        }
     }
     .sidebar .section .secondaryContent {
         box-shadow: 0 0 3px rgba(255,255,255,.75);
@@ -321,6 +478,7 @@
     }
 
     .navPopup {
+        -moz-transform: translateX(1px);
         .listItem {
             border-color: #888;
         }
@@ -908,8 +1066,15 @@
         background-color: #333;
         color: inherit;
     }
+    .navPopup .menuHeader.primaryContent {
+        background-color: rgba(30,30,30, 0.9);
+        border-bottom-color: transparent;
+    }
     .navPopup .listPlaceholder {
-        background-color: rgba(38, 38, 38, 0.96);
+        background-color: rgba(38, 38, 38, 0.9);
+    }
+    .navPopup .listPlaceholder > .secondaryContent{
+        background: transparent;
     }
     .navPopup .listPlaceholder ol.secondaryContent.Unread {
         background-color: hsl(194, 25%, 26%);
