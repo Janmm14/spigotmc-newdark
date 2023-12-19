@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.2.6
+@version        1.2.7
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -653,6 +653,9 @@
     }
     span[style="color: #E8E8E8"] {
         color: #777 !important;
+    }
+    span[style="color: #404040"] {
+        color: #999 !important;
     }
     span[style="color: #000000"] {
         color: inherit !important;
