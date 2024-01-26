@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.2.7
+@version        1.2.8
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -688,7 +688,7 @@
         background-color: #222;
         color: inherit;
         box-shadow: inset 0 1px rgba(255,255,255,.25);
-        text-shadow: 0 1px rgba(255,255,255,.5);
+        text-shadow: 0 1px rgba(17, 17, 17, .5);
         .nodeTitle {
             color: #eee;
             a {
