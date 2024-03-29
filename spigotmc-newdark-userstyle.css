@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.2.8
+@version        1.3.0
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -9,6 +9,7 @@
 @var checkbox black_header "Black header background" 1
 @var checkbox no_header "Remove the header" 1
 @var checkbox nomargin "Less margin on spigotmc home news feed and wiki pages" 1
+@var checkbox nobg "No background around home page articles (enable less margin)" 1
 @var checkbox icode_dark "Should inline code [icode] have dark background" 1
 @var number codeblockrightmargin "Right margin of code blocks (+1)" [141, 1, 1000, 1, 'px']
 ==/UserStyle== */
@@ -348,9 +349,108 @@
             color: #efb61c;
         }
     }
+    .mainContainer {
+        margin-bottom: 16px;
+        @media (min-width: 801px) {
+            width: calc(100% - 266px) !important;
+            margin-right: 0 !important;
+            .mainContent {
+                margin-right: 0 !important;
+            }
+        }
+    }
     .mainContainer .mainContent, .mainContainer_noSidebar {
         background-color: #222;
         border-color: #444;
+    }
+    .articlePager .PageNav {
+        padding: 8px 16px;
+        margin: 0;
+        .pageNavHeader {
+            padding: 0;
+            margin: 0 4px 0 0;
+        }
+        nav {
+            a, .scrollable {
+                margin-bottom: 0;
+            }
+            a:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+    .hasRightSidebar #content.EWRporta2_ArticleList .mainContainer .mainContent {
+        &::after {
+            content: unset;
+            display: none;
+        }
+        @media (min-width: 801px) {
+            .articlePager {
+                & when (@nobg = 0) {
+                    margin-bottom: 2px;
+                }
+                & when (@nobg = 1) {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+    }
+    #wikiPage {
+        margin-bottom: 0 !important;
+    }
+    .mainContent > .funbox {
+        margin-top: 16px;
+    }
+    & when (@nobg = 1) {
+        #content.EWRporta2_ArticleList .mainContainer .mainContent {
+            padding: 0;
+            margin: 0;
+            border: 0 none;
+            background-color: transparent;
+        }
+        .hasRightSidebar #content.EWRporta2_ArticleList {
+            .uix_contentFix {
+                @media (min-width: 801px) {
+                    display: flex;
+                    justify-content: space-between;
+                }
+                &::after {
+                    content: unset;
+                    display: none;
+                }
+            }
+            .mainContainer {
+                @media (min-width: 801px) {
+                    float: unset;
+                    margin-right: 16px !important;
+                    width: calc(100% - 266px);
+                }
+                .mainContent {
+                    margin-right: 0 !important;
+                    &::after {
+                        content: unset;
+                        display: none;
+                    }
+                    #articlesGrid {
+                        & >.articleItem {
+                            margin-bottom: 16px;
+                        }
+                        .sectionMain {
+                            margin: 0 auto;
+                        }
+                    }
+                }
+                .articlePager .PageNav {
+                    background: #222;
+                }
+            }
+            aside.uix_mainSidebar {
+                @media (min-width: 801px) {
+                    float: unset;
+                }
+                margin-bottom: 16px;
+            }
+        }
     }
     
     .tabs {
