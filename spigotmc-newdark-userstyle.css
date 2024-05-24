@@ -1,13 +1,14 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.4.1
+@version        1.5
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
 @var range dim "Dim spigotmc orange" [1, 0.4, 1, 0.025]
 @var checkbox black_header "Black header background" 1
 @var checkbox oled "OLED / darkgray -> black background in many places" 1
+@var checkbox olednostripe "if OLED, no list background stripes" 0
 @var checkbox noorange "No orange background" 1
 @var checkbox no_header "Remove the header" 1
 @var checkbox nomargin "Less margin on spigotmc home news feed and wiki pages" 1
@@ -27,11 +28,15 @@
         --inner-bg-dark: #1a1a1a;
         --inner-bg-verydark: #111;
         --post-bg: #2a2a2a;
+        --oled-stripe-bg: #111;
         & when (@oled = 1) {
             --inner-bg: #000;
             --inner-bg-dark: #000;
             --inner-bg-verydark: #000;
             --post-bg: #000;
+            & when (@olednostripe = 1) {
+                --oled-stripe-bg: #000;
+            }
         }
         --orange: #efb61c;
         /* unused
@@ -414,39 +419,39 @@
     }
 
     & when (@no_header = 1) {
-            #navigation .navTabs {
-                > .pageWidth {
-                    padding-left: 0px;
-                    padding-right: 10px;
-                    ul li.articles.PopupClosed:hover a.navLink {
-                        background: -moz-radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
-                        background: -webkit-radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
-                        background: radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
-                        &::before {
-                            filter: brightness(1.1);
-                        }
+        #navigation .navTabs {
+            > .pageWidth {
+                padding-left: 0px;
+                padding-right: 10px;
+                ul li.articles.PopupClosed:hover a.navLink {
+                    background: -moz-radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
+                    background: -webkit-radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
+                    background: radial-gradient(circle at 20%, rgba(255, 255, 255, 0.22) 0%, #00000000 35%);
+                    &::before {
+                        filter: brightness(1.1);
                     }
-                    ul li.articles a.navLink {
-                        padding-left: 0px;
-                        display: flex;
+                }
+                ul li.articles a.navLink {
+                    padding-left: 0px;
+                    display: flex;
 
-                        &::before {
-                            background-image: url("//static.spigotmc.org/img/spigot.png");
-                            background-size: 50px;
-                            background-repeat: no-repeat;
-                            background-position-x: 5px;
-                            background-position-y: 5px;
-                            content: "";
-                            display: inline-block;
-                            height: 40px;
-                            width: 55px;
-                            position: static;
-                            border: 0 none;
-                            border-radius: 8px 8px 0 8px;
-                        }
+                    &::before {
+                        background-image: url("//static.spigotmc.org/img/spigot.png");
+                        background-size: 50px;
+                        background-repeat: no-repeat;
+                        background-position-x: 5px;
+                        background-position-y: 5px;
+                        content: "";
+                        display: inline-block;
+                        height: 40px;
+                        width: 55px;
+                        position: static;
+                        border: 0 none;
+                        border-radius: 8px 8px 0 8px;
                     }
                 }
             }
+        }
         @media(max-width: 800px) {
             #navigation .navTabs {
                 .navTab.selected:nth-child(2)::before {
@@ -523,68 +528,6 @@
                     }
                 }
             }
-            & when (@oled = 0) {
-                .Responsive .resourceListBlock {
-                    margin: 0 -16px;
-                    width: calc(100% + 2 * 16px);
-                    .resourceListSidebar {
-                        display: block;
-                        width: calc(100% - 2* 16px;);
-                        margin: 10px 16px 0 16px;
-                        >:last-child {
-                            margin-bottom: 2px;
-                        }
-                    }
-                }
-            }
-            & when (@oled = 1) {
-                .Responsive .resourceListBlock {
-                    margin: 0 -16px;
-                    width: calc(100% + 2 * 16px);
-                }
-                .Responsive .resourceListBlock {
-                    .resourceList {
-                        border-bottom-left-radius: 6px;
-                        border-bottom-right-radius: 6px;
-                        .resourceListItem:last-child {
-                            border-bottom-left-radius: 6px;
-                            border-bottom-right-radius: 6px;
-                            border-left: 1px solid #555;
-                            border-right: 1px solid #555;
-                            position: relative;
-                            left: -1px;
-                        }
-                    }
-                    .section {
-                        margin-bottom: 0;
-                    }
-                    .pageNavLinkGroup:has(>.PageNav) {
-                        background: var(--inner-bg);
-                        margin: -6px -1px 0 -1px;
-                        padding: 14px 15px;
-                        padding-bottom: 8px;
-                    }
-                    .resourceListSidebar {
-                        display: block;
-                        width: calc(100% + 2 * 1px);
-                        background: var(--inner-bg);
-                        margin: 0 -1px;
-                        > :last-child {
-                            margin-bottom: 0;
-                            margin-bottom: -1px;
-                        }
-                    }
-                }
-                .resource_index, .resource_category {
-                    .mainContainer_noSidebar {
-                        padding-bottom: 0;
-                        &::after {
-                            content: none;
-                            display: none;
-                        }
-                    }
-                }
-            }
         }
         @media(min-width: 1200px) {
             #header #userBar .navTabs {
@@ -624,14 +567,6 @@
                 background: transparent;
                 position: relative;
                 top: -12px;
-            }
-        }
-    }
-    @media(max-width: 800px) {
-        #logoBlock .pageContent #logo {
-            & when (@black_header = 1)  {
-                position: initial;
-                top: initial;
             }
         }
     }
@@ -976,10 +911,7 @@
         }
     }
     footer {
-        background: #111;
-        & when(@oled = 1) {
-            background: #000;
-        }
+        background: var(--inner-bg-verydark);
         .uix_socialLink a {
             color: #000;
             text-shadow: 1px 1px #777;
@@ -1296,7 +1228,7 @@
         background-color: var(--inner-bg-verydark);
         border-color: #444;
         & when(@oled = 1) {
-            background-color: #111;
+            background-color: var(--oled-stripe-bg);
         }
     }
     .node.level_2 .nodeInfo {
@@ -1494,7 +1426,7 @@
             background-color: var(--inner-bg);
         }
         & when (@oled = 1) {
-            background-color: #111;
+            background-color: var(--oled-stripe-bg);
         }
     }
     .discussionList .discussionListItem.sticky {
@@ -1588,7 +1520,7 @@
         background-color: var(--inner-bg);
         border-color: #555;
         & when (@oled = 1) {
-            background-color: #111;
+            background-color: var(--oled-stripe-bg);
         }
         &:nth-child(2n) {
             background-color: var(--inner-bg-dark);
@@ -1763,7 +1695,7 @@
         }
         background-color: var(--inner-bg-dark);
         & when (@oled = 1) {
-            background-color: #111;
+            background-color: var(--oled-stripe-bg);
         }
         &:nth-child(2n) {
             background-color: var(--inner-bg);
@@ -2017,4 +1949,117 @@
 	.SortByBoxButtonLinkStyle:hover {
 		color: #555 !important;
 	}
+    
+    
+    @media(max-width: 800px) {
+        #logoBlock .pageContent #logo {
+            & when (@black_header = 1)  {
+                position: initial;
+                top: initial;
+            }
+        }
+        & when (@oled = 0) {
+            .Responsive .resourceListBlock {
+                margin: 0 -16px;
+                width: calc(100% + 2 * 16px);
+                .resourceListSidebar {
+                    display: block;
+                    width: calc(100% - 2* 16px;);
+                    margin: 10px 16px 0 16px;
+                    >:last-child {
+                        margin-bottom: 2px;
+                    }
+                }
+            }
+        }
+        & when (@oled = 1) {
+            .Responsive .resourceListBlock {
+                margin: 0 -16px;
+                width: calc(100% + 2 * 16px);
+            }
+            .Responsive .resourceListBlock {
+                .resourceList {
+                    border-bottom-left-radius: 6px;
+                    border-bottom-right-radius: 6px;
+                    .resourceListItem:last-child {
+                        border-bottom-left-radius: 6px;
+                        border-bottom-right-radius: 6px;
+                        border-left: 1px solid #555;
+                        border-right: 1px solid #555;
+                        position: relative;
+                        left: -1px;
+                    }
+                }
+                .section {
+                    margin-bottom: 0;
+                }
+                .pageNavLinkGroup:has(>.PageNav) {
+                    background: var(--inner-bg);
+                    margin: 0 -1px;
+                    padding: 8px 15px;
+                    padding-bottom: 10px;
+                }
+                .resourceListSidebar {
+                    display: block;
+                    width: calc(100% + 2 * 1px);
+                    background: var(--inner-bg);
+                    margin: 0 -1px;
+                    > :last-child {
+                        margin-bottom: 0;
+                        margin-bottom: -1px;
+                    }
+                }
+            }
+            .resource_index, .resource_category {
+                .mainContainer_noSidebar {
+                    padding-bottom: 0;
+                    &::after {
+                        content: none;
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    @media(max-width: 610px) {
+        .Responsive .resourceListBlock {
+            margin: 0 -8px;
+            width: calc(100% + 2 * 8px);
+        }
+        .resource_author_view .mainContent > .section .resourceList,
+        .resource_author_view .mainContent > .section :not(:has(.pageNavLinkGroup > .PageNav)) .resourceList {
+            margin-left: -8px;
+            margin-right: -8px;
+        }
+    }
+    @media(max-width: 480px) {
+        .resourceListSidebar {
+            > .secondaryContent {
+                padding: 7px 14px;
+            }
+        }
+        .resource_author_view .mainContent > .section .resourceList,
+        .resource_author_view .mainContent > .section :not(:has(.pageNavLinkGroup > .PageNav)) .resourceList {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+        .Responsive .resourceListBlock {
+            margin: 0 -1px;
+            width: calc(100% + 2 * 1px);
+        }
+        .titleBar {
+            display: inline-block;
+            margin-left: 8px;
+            margin-bottom: 0;
+        }
+        .Responsive .pageNavLinkGroup .linkGroup {
+            margin-top: 0;
+        }
+        .hasRightSidebar #content.EWRporta2_ArticleList {
+            .mainContainer .mainContent {
+                padding: 0 0 0 7px;
+                margin-right: -1px !important;
+            }
+        }
+    }
 }
