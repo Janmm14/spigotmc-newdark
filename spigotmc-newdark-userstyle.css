@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.6
+@version        1.6.1
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -21,6 +21,7 @@
 @var checkbox popup_fix "if some popups are 1px wrong" 1
 @var checkbox bg_bubbles "Background bubbles" 0
 @var checkbox bg_bubbles_dark "Dark orange bubbles" 0
+@var checkbox donate_shine "Donation shine effect" 0
 @var checkbox bg_dbg "Background bubble debug" 0
 ==/UserStyle== */
 
@@ -483,6 +484,113 @@
             color: #858585;
         }
     }
+    .sidebar .section.widget_Donate when (@noorange = 1) and (@donate_shine = 1) {
+        .secondaryContent {
+            padding: 0;
+            box-sizing: border-box;
+                position: relative;
+            h3 {
+                display: inline-block;
+                margin: 0;
+                padding: 8px 8px 6px 8px;
+                text-shadow: none;
+                color: transparent;
+                background-clip: text;
+                --shine-duration: 5s;
+                --shine-base: transparent;
+                --shine-shine: rgba(255,255,255,0.5);
+                background-color: var(--orange-dark);
+
+                background-image: -moz-linear-gradient(90deg, var(--shine-base) 94%, var(--shine-shine) 97%, var(--shine-base) 100%);
+                background-image: -webkit-linear-gradient(90deg, var(--shine-base) 94%, var(--shine-shine) 97%, var(--shine-base) 100%);
+                background-image: linear-gradient(90deg, var(--shine-base) 94%, var(--shine-shine) 97%, var(--shine-base) 100%);
+
+                background-image: -moz-linear-gradient(90deg, var(--shine-base) 90%, var(--shine-shine) 96%, var(--shine-base) 100%);
+                background-image: -webkit-linear-gradient(90deg, var(--shine-base) 90%, var(--shine-shine) 96%, var(--shine-base) 100%);
+                background-image: linear-gradient(90deg, var(--shine-base) 90%, var(--shine-shine) 96%, var(--shine-base) 100%);
+
+                background-image: -moz-linear-gradient(90deg, var(--shine-base) 85%, var(--shine-shine) 90%, var(--shine-shine) 95%, var(--shine-base) 100%);
+                background-image: -webkit-linear-gradient(90deg, var(--shine-base) 85%, var(--shine-shine) 90%, var(--shine-shine) 95%, var(--shine-base) 100%);
+                background-image: linear-gradient(90deg, var(--shine-base) 85%, var(--shine-shine) 90%, var(--shine-shine) 95%, var(--shine-base) 100%);
+                background-size: 200% auto;
+                animation: shine var(--shine-duration) 0s linear infinite;
+
+                border-bottom: 0 none;
+                &::after {
+                    pointer-events: none;
+                    content: ".";
+                    color: transparent;
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    border-radius: 12px 12px 0 0;
+                    border-bottom: 1px solid #444;
+                    padding: 8px 0 7px 0;
+                }
+
+                & when (@oled = 1) {
+                    border-top: 0 none;
+                    &::after {
+                        border-top: 2px solid #333;
+                        border-bottom-color: #333;
+                        border-radius: 6px 6px 0 0;
+                    }
+                }
+            }
+            form {
+                padding: 8px;
+                background: var(--inner-bg);
+                border-radius: 0 0 6px 6px;
+                & when (@oled = 1) {
+                    padding: 8px 7px 7px 7px;
+                }
+                input[type="image"] {
+                    border-radius: 13px;
+                    &:hover {
+                        filter: saturate(2.5);
+                    }
+                }
+            }
+            background: var(--inner-bg-dark);
+        }
+    }
+    .sidebar .section.widget_Donate .secondaryContent form::after when (@donate_shine = 1) {
+        pointer-events: none;
+        position: absolute;
+        left: 7px;
+        bottom: 11px;
+        width: 92px;
+        height: 26px;
+        border-radius: 13px;
+        content: "";
+        --shine-duration: 5s;
+        --shine-base: transparent;
+        --shine-shine: rgba(255,255,255,0.5);
+        background-color: transparent;
+
+        background-image: -moz-linear-gradient(90deg, var(--shine-base) 94%, var(--shine-shine) 97%, var(--shine-base) 100%);
+        background-image: -webkit-linear-gradient(90deg, var(--shine-base) 94%, var(--shine-shine) 97%, var(--shine-base) 100%);
+        background-image: linear-gradient(90deg, var(--shine-base) 94%, var(--shine-shine) 97%, var(--shine-base) 100%);
+
+        background-image: -moz-linear-gradient(90deg, var(--shine-base) 90%, var(--shine-shine) 96%, var(--shine-base) 100%);
+        background-image: -webkit-linear-gradient(90deg, var(--shine-base) 90%, var(--shine-shine) 96%, var(--shine-base) 100%);
+        background-image: linear-gradient(90deg, var(--shine-base) 90%, var(--shine-shine) 96%, var(--shine-base) 100%);
+
+        background-image: -moz-linear-gradient(90deg, var(--shine-base) 85%, var(--shine-shine) 90%, var(--shine-shine) 95%, var(--shine-base) 100%);
+        background-image: -webkit-linear-gradient(90deg, var(--shine-base) 85%, var(--shine-shine) 90%, var(--shine-shine) 95%, var(--shine-base) 100%);
+        background-image: linear-gradient(90deg, var(--shine-base) 85%, var(--shine-shine) 90%, var(--shine-shine) 95%, var(--shine-base) 100%);
+        background-size: 200% auto;
+        animation: shine var(--shine-duration) 0s linear infinite;
+        @media (min-width: 611px) {
+            bottom: 10px;
+        }
+        @media (min-width: 719px) {
+            bottom: 11px;
+        }
+    }
+
     .breadBoxTop > nav, .breadBoxBottom nav {
         border-radius: 6px;
     }
