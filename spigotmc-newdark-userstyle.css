@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.6.1
+@version        1.6.2
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -15,7 +15,7 @@
 @var checkbox nobg "No border around home page articles (enable less margin)" 1
 @var checkbox icode_dark "Should inline code [icode] have dark background" 1
 @var number codeblockrightmargin "Right margin of code blocks (+1)" [141, 1, 1000, 1, 'px']
-@var checkbox msg_signature "Combine signature and message date" 1
+@var checkbox msg_signature "New post-meta (footer) design (buttons, date, ratings)" 1
 @var checkbox hover_rating "when width smaller, hide rating until hovered" 0
 @var checkbox rating_no_text "do not display rating text name" 0
 @var checkbox popup_fix "if some popups are 1px wrong" 1
@@ -42,9 +42,10 @@
         --inner-bg-dark-l: #1a1a1a;
         --inner-bg-verydark: #111;
         --inner-bg-verydark-l: #111;
+        --inner-bg-verydark-d: #111;
         --post-bg: #2a2a2a;
         --post-bg-iframe: #2a2a2a;
-        --oled-stripe-bg: rgba(255,255,255, 0.068); /* #111 */
+        --oled-stripe-bg: rgba(255, 255, 255, .068); /* #111 */
         & when (@oled = 1) {
             --black: #0009;
             --black-l: #0000;
@@ -53,6 +54,7 @@
             --inner-bg-dark: #0009;
             --inner-bg-dark-d: #000;
             --inner-bg-verydark: #0009;
+            --inner-bg-verydark-d: #000;
             --inner-bg-l: #0000;
             --inner-bg-dark-l: #0000;
             --inner-bg-verydark-l: #0000;
@@ -492,7 +494,7 @@
             h3 {
                 display: inline-block;
                 margin: 0;
-                padding: 8px 8px 6px 8px;
+                padding: 8px;
                 text-shadow: none;
                 color: transparent;
                 background-clip: text;
@@ -527,12 +529,14 @@
                     right: 0;
                     border-radius: 12px 12px 0 0;
                     border-bottom: 1px solid #444;
-                    padding: 8px 0 7px 0;
+                    padding: 9px 0 10px 0;
                 }
 
                 & when (@oled = 1) {
                     border-top: 0 none;
+                    padding: 8px 8px 6px 8px;
                     &::after {
+                        padding: 8px 0 7px 0;
                         border-top: 2px solid #333;
                         border-bottom-color: #333;
                         border-radius: 6px 6px 0 0;
@@ -559,10 +563,10 @@
     .sidebar .section.widget_Donate .secondaryContent form::after when (@donate_shine = 1) {
         pointer-events: none;
         position: absolute;
-        left: 7px;
-        bottom: 11px;
-        width: 92px;
-        height: 26px;
+        left: 9px;
+        bottom: 12px;
+        width: 90px;
+        height: 24px;
         border-radius: 13px;
         content: "";
         --shine-duration: 5s;
@@ -583,11 +587,8 @@
         background-image: linear-gradient(90deg, var(--shine-base) 85%, var(--shine-shine) 90%, var(--shine-shine) 95%, var(--shine-base) 100%);
         background-size: 200% auto;
         animation: shine var(--shine-duration) 0s linear infinite;
-        @media (min-width: 611px) {
-            bottom: 10px;
-        }
-        @media (min-width: 719px) {
-            bottom: 11px;
+        @media (max-width: 610px) or (min-width: 719px) {
+            bottom: 13px;
         }
     }
 
@@ -1107,7 +1108,8 @@
             color: inherit;
         }
     }
-    .resource_author_view .mainContent {
+    #content.resource_author_view .mainContent {
+        background: linear-gradient(180deg, var(--inner-bg-dark) 49%, var(--inner-bg) 50%);
         .titleBar {
             margin-bottom: 0;
         }
@@ -1140,6 +1142,236 @@
             } 
         }
     }
+    #content.resource_description, #content.resource_updates, #content.resource_reviews, #content.resource_history, #content.thread_view:has(.mainContent > .resourceInfo) {
+        .mainContainer_noSidebar {
+            padding: 0;
+        }
+        .mainContent {
+            flex-direction: column;
+            padding: 0;
+            margin: 0 !important;
+            .resourceInfo {
+                margin: 0;
+                padding: 8px;
+                .resourceImage {
+                    line-height: 0;
+                    margin-bottom: 0;
+                }
+                .primaryLinks {
+                    min-width: 0;
+                    .downloadButton .inner {
+                        margin-top: 7px;
+                        margin-right: 6px;
+                    }
+                }
+            }
+            .resourceTabs {
+                max-width: 100%;
+                margin: 0 0 9px 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                border-top: 1px solid #555;
+                .tabs {
+                    display: contents;
+                    margin-top: 0;
+                    padding: 0;
+                    li {
+                        display: inline-block;
+                        position: relative;
+                        flex-grow: 1;
+                        flex-shrink: 1;
+                        a {
+                            width: 100%;
+                            border-radius: 0;
+                            display: inline-block;
+                            margin: 0;
+                            border-right: 0 none;
+                            border-top: 0 none;
+                            border-bottom: 1px solid #555;
+                            box-sizing: border-box;
+                            text-align: center;
+                            padding-left: 12px;
+                            padding-right: 12px;
+                        }
+                        &:first-child a {
+                            border-left: 0;
+                        }
+                        &.active {
+                            &::before,
+                            &::after,
+                            a::before,
+                            a::after {
+                                content:'';
+                                display: block;
+                                position: absolute;
+                                background: transparent;
+                                box-sizing: border-box;
+                                border-width: 0;
+                                border-style: solid;
+                                width: var(--size);
+                                height: var(--size);
+                            }
+                            &::before, &::after {
+                                --size: 8px;
+                                --width: 3px;
+                                z-index: 2;
+                                bottom: calc(1px - var(--width));
+                                border-color: var(--inner-bg);
+                            }
+                            &::before {
+                                left: calc(0px - var(--size) + var(--width));
+                                border-right-width: var(--width);
+                                border-bottom-width: var(--width);
+                                border-bottom-right-radius: 5px;
+                            }
+                            &::after {
+                                right: calc(-1px - var(--size) + var(--width));
+                                border-left-width: var(--width);
+                                border-bottom-width: var(--width);
+                                border-bottom-left-radius: 6px;
+                            }
+                            &:first-child::before,
+                            &:last-child::after,
+                            &:first-child a::before,
+                            &:last-child a::after {
+                                display: none;
+                            }
+                            a {
+                                position: relative;
+                                border-bottom: 0;
+                                background: transparent;
+                                &::before, &::after {
+                                    --size: 6px;
+                                    --radius: 4px;
+                                    z-index: 3;
+                                    bottom: 0;
+                                    border-color: #555;
+                                }
+                                &::before {
+                                    left: calc(0px - var(--size));
+                                    border-right-width: 1px;
+                                    border-bottom-width: 1px;
+                                    border-bottom-right-radius: var(--radius);
+                                }
+                                &::after {
+                                    right: calc(0px - var(--size));
+                                    border-left-width: 1px;
+                                    border-bottom-width: 1px;
+                                    border-bottom-left-radius: var(--radius);
+                                    zoutline: 1px solid red;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .innerContent {
+                .section {
+                    margin: 0;
+                    &.updates {
+                        .textHeading, li, .moreLink {
+                            padding-left: 8px;
+                            padding-right: 8px;
+                        }
+                    }
+                    &.reviews {
+                        .textHeading {
+                            padding-left: 8px;
+                            padding-right: 8px;
+                        }
+                        &:has(div[style="display: none"]):not(:has(.moreLink)) {
+                            li:last-child {
+                                border-radius: 0 0 6px 6px;
+                                border-bottom: 0 none;
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                    > ol {
+                        display: contents;
+                        > li.primaryContent.resourceUpdate {
+                            zpadding: 0;
+                            zmargin: 10px 16px;
+                        }
+                    }
+                }
+                li.review {
+                    .avatar {
+                        margin-left: 8px;
+                    }
+                    .messageInfo {
+                        margin-right: 8px;
+                    }
+                    
+                }
+                &:has(.pageNavLinkGroup > .linkGroup[style="display: none"]) {
+                    li.review {
+                        &:last-child {
+                            border-radius: 0 0 6px 6px;
+                            border-color: #444;
+                            margin-bottom: -1px;
+                        }
+                    }
+                    .pageNavLinkGroup {
+                        display: none;
+                    }
+                }
+                .updateContainer {
+                    .textHeading {
+                        border-bottom-color: var(--orange);
+                        border-image: linear-gradient(to right, var(--orange) -10%, #4440 95%) 1;
+                        padding-bottom: 2px;
+                        margin-bottom: 14px;
+                    }
+                    &:not(:has(> .PageNav)) {
+                        li.resourceUpdate:last-child {
+                            border-radius: 0 0 6px 6px;
+                            border-color: #444;
+                            margin-bottom: -1px;
+                        }
+                    }
+                }
+                .dataTable.resourceHistory {
+                    border-radius: 0 0 6px 6px;
+                    overflow: hidden;
+                    margin-top: -7px;
+                    margin-bottom: 0;
+                    th {
+                        border-top: 0 none;
+                        background: transparent;
+                    }
+                    tr:nth-child(2n) {
+                        background-color: var(--inner-bg-dark);
+                        & when (@oled = 1) {
+                            background-color: var(--oled-stripe-bg);
+                        }
+                        &:last-child {
+                            border-bottom-right-radius: 5px;
+                        }
+                    }
+                    tr:last-child {
+                        td {
+                            border-bottom: 0 none;
+                            &:last-child {
+                                a {
+                                    border-bottom-right-radius: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #content.thread_view:has(.mainContent > .resourceInfo) {
+        .pageNavLinkGroup, li.message {
+            margin-left: 16px;
+            margin-right: 16px;
+        }
+    }
+    
     #Sponsors2 {
         > .secondaryContent {
             padding-bottom: 0;
@@ -1185,10 +1417,9 @@
     .breadBoxTop.withTopCtrl .callToAction {
         span {
             & when (@oled = 0) and (@noorange = 1) {
-                dpadding: 1px 17px;
             }
         }
-        &:hover span  when (@noorange = 1) {
+        &:hover span when (@noorange = 1) {
             border-top:  1px solid hsl(32, 95%, 75%);
             background: var(--orange-dark) -moz-linear-gradient(top,rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 100%);
             background: var(--orange-dark) -webkit-gradient(linear,left top,left bottom,color-stop(0%,url(rgba.php?r=255&g=255&b=255&a=51)),color-stop(100%,rgba(255,255,255,0)));
@@ -1202,6 +1433,8 @@
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33ffffff',endColorstr='#00ffffff',GradientType=0 ) brightness(@dim);
             & when (@oled = 0) {
                 padding-top: 0;
+                line-height: 38px;
+                height: 39px;
             }
             & when (@oled = 1) {
                 border: 0 none;
@@ -1352,7 +1585,7 @@
         display: inline-block;
         width: auto;
         --shine-duration: 5s;
-        --shine-text: hsl(0, 0%, 85%);
+        --shine-text: hsl(0, 0%, 100%);
         .thCopyrightNoticeStyle {
             position: relative;
             line-height: 16px;
@@ -1555,6 +1788,54 @@
             }
         }
     }
+    .chooserOverlay .styleChooser {
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: auto auto;
+        border-color: #999 !important;
+        background: linear-gradient(to bottom, var(--inner-bg-dark-d) 50%, darkred);
+        h2.h1 {
+            grid-column: 1 / -1;
+            font-size: 0;
+            color: transparent;
+            &::after {
+                content: "SpigotMC NewDark by Janmm14 selected as UserStyle";
+                font-size: 14px;
+                color: #fff;
+            }
+        }
+        .subHeading {
+            grid-column: 1 / 2;
+            border: 0 none;
+            font-size: 0;
+            color: transparent;
+            background: darkred;
+            box-sizing: border-box;
+            height: 60px;
+            border-bottom-left-radius: 6px;
+            &::after {
+                content: "To change SpigotMC native styles, you need to donate to SpigotMC (otherwise just the one default style is listed here) and disable SpigotMC NewDark userstyle (check browser extensions).";
+                font-size: 13px;
+                color: #fff;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+        .secondaryContent {
+            display: none;
+        }
+        .primaryContent {
+            display: none;
+        }
+        .sectionFooter {
+            grid-column: 2 / 3;
+            border-radius: 0 0 6px 0;
+            box-sizing: border-box;
+            height: 60px;
+            background: darkred;
+        }
+    }
     .chooserColumns li a {
         border: 1px solid transparent;
         &:hover {
@@ -1634,10 +1915,25 @@
         background-color: #000;
         border-color: #666;
     }
+    .message:not(.quickReply) .messageText {
+        &:has(>.newIndicator) .bbCodeBlock:nth-child(2) {
+            margin-top: 0;
+        }
+        &:not(:has(>.newIndicator)) .bbCodeBlock:first-child {
+            margin-top: 0;
+        }
+    }
     .bbCodeBlock {
         background-color: var(--black-l);
         border-color: #666;
         margin-right: calc(@codeblockrightmargin - 1px);
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    
+        &.bbCodeCode .type {
+            height: 18px;
+            padding: 4px;
+        }
         .type {
             background-color: var(--inner-bg-dark-l);
             color: #d3d3d3;
@@ -1805,8 +2101,44 @@
     .xenForm fieldset, .xenForm .formGroup, .dataTable tr.dataRow td {
         border-color: #666;
     }
-    .dataTable .dataRow .dataOptions a.secondaryContent {
-        border-color: #666;
+    .dataTable .dataRow {
+        .ratings {
+            line-height: 16px;
+        }
+        div.rating .Hint {
+            line-height: 16px;
+            position: relative;
+            top: 1px;
+            white-space: nowrap;
+        }
+        .dataOptions {
+            a.secondaryContent {
+                background: transparent;
+                line-height: 16px;
+                border-color: #666;
+                box-sizing: border-box;
+                height: 100%;
+                &:hover {
+                    background-color: var(--inner-bg-verydark);
+                }
+            }
+        }
+        .delete {
+            border-color: #666;
+            background: transparent;
+            a {
+                line-height: 16px;
+                padding-top: 7px;
+                padding-bottom: 6px;
+                text-indent: initial;
+                color: transparent;
+                font-size: 0;
+                &:hover {
+                    background-color: var(--inner-bg-verydark);
+                    background-size: 24px 24px;
+                }
+            }
+        }
     }
     
     .messageList .message {
@@ -1852,6 +2184,7 @@
         background-color: rgba(255, 255, 255, .5);
     }
     .messageUserBlock h3.userText {
+        border-color: #444;
         background-color: transparent;
     }
     .messageUserBlock a.username {
@@ -1967,6 +2300,7 @@
         background: #1a1a1a;
         background: linear-gradient(0deg, #0a0a0a 0%, #1a1a1a 90%);
         border-color: #5a5a5a;
+        font-style: normal;
     }
     .discussionListItem .stats dl {
         border-color: #888;
@@ -2053,11 +2387,16 @@
     .resourceListItem {
         background-color: var(--inner-bg);
         border-color: #555;
+        &:first-child {
+            border-top-width: 1px;
+            border-top-style: solid;
+            margin-top: 8px;
+        }
         & when (@oled = 1) {
             background-color: var(--oled-stripe-bg);
         }
         &:nth-child(2n) {
-            background-color: var(--inner-bg-dark);
+            background-color: var(--inner-bg-dark-l);
         }
     }
     .resourceListItem .resourceImage, .resourceListItem .resourceStats {
@@ -2118,6 +2457,9 @@
         justify-content: center;
         padding-top: 13px;
         line-height: 20px;
+    }
+    .rating .star {
+        line-height: 16px;
     }
     .innerContent .rateBlock .rating {
         margin-left: 5px;
@@ -2493,6 +2835,9 @@
         padding: 2px 2px 1px 3px;
         box-shadow: none;
     }
+    :root kbd when(@oled = 0) {
+        text-shadow: 0 0 3px rgba(0,0,0,0.75), 0 0 1px rgba(0,0,0,0.5);
+    }
     @media (min-width: 611px) {
         .mainContainer .mainContent:has(>#wikiPage) when (@nomargin = 1) {
             padding: 0;
@@ -2710,6 +3055,12 @@
                 top: initial;
             }
         }
+        #content.thread_view:has(.mainContent > .resourceInfo) {
+            .pageNavLinkGroup, li.message {
+                margin-left: 8px;
+                margin-right: 8px;
+            }
+        }
         & when (@oled = 0) {
             .Responsive .resourceListBlock {
                 margin: 0 -16px;
@@ -2791,6 +3142,33 @@
             float: right;
             text-align: match-parent;
         }
+        .hasFlexbox .message .messageUserInfo {
+            margin: -9px -9px 5px -9px;
+            border-color: #555;
+            border-radius: 6px 6px 0 0;
+        }
+        .messageList .message .messageContent {
+            padding: 0;
+        }
+        .message .messageMeta {
+            padding-top: 0;
+            padding-bottom: 0;
+            .control {
+                margin-bottom: 0;
+            }
+            .privateControls .control:first-child {
+                padding-left: 3px;
+            }
+            .publicControls .control:last-child {
+                padding-right: 1px;
+            }
+            :not(:has(.privateControls)) {
+                .publicControls .control:first-child {
+                    padding-left: 3px;
+                }
+            }
+            margin-bottom: -4px !important;
+        }
     }
     @media(max-width: 480px) {
         .resourceListSidebar {
@@ -2819,6 +3197,14 @@
             .mainContainer .mainContent {
                 padding: 0 0 0 7px;
                 margin-right: -1px !important;
+            }
+        }
+        #content.resource_description, #content.resource_updates, #content.resource_reviews, #content.resource_history, #content.thread_view:has(.mainContent > .resourceInfo) {
+            .mainContent .resourceInfo {
+                .primaryLinks .downloadButton .inner {
+                    margin-top: 8px;
+                    margin-right: 0;
+                }
             }
         }
     }
@@ -2855,14 +3241,14 @@
                     min-height: 100%;
                     max-width: 100%;
                     display: grid;
-                    padding: 8px 0 0 8px;
+                    padding: 1px 0 0 8px;
                     grid-template-rows: 1fr auto auto auto auto auto;
                     grid-template-columns: repeat( 2, minmax(min-content, 1fr));
                     _grid-template-columns: 50% 50%;
                     .messageContent {
                         padding: 0 0 8px 0;
                         .bbCodeBlock {
-                            margin-right: calc(@codeblockrightmargin - 1px + 7px);
+                            margin-right: calc(@codeblockrightmargin - 1px);
                         }
                     }
                 }
@@ -2909,6 +3295,10 @@
                     background: var(--inner-bg-l);
                     padding-top: 5px;
                     padding-bottom: 5px;
+                    border-radius: 0 0 6px 0;
+                }
+                &:not(:has(.signature)) &:not(:has(.dark_postrating)) .messageMeta {
+                    border-radius: 0 6px 6px 0;
                 }
                 .dark_postrating.likesSummary, .dark_postrating {
                     box-sizing: border-box;
@@ -2923,6 +3313,9 @@
                     > * {
                         margin-top: 8px;
                         margin-bottom: 5px;
+                    }
+                    .dark_postrating_inputlist_undo {
+                        margin-top: 2px;
                     }
                 }
                 &:has(.dark_postrating) {
