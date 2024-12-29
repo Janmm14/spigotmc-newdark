@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.6.2
+@version        1.6.3
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -1159,10 +1159,6 @@
                 }
                 .primaryLinks {
                     min-width: 0;
-                    .downloadButton .inner {
-                        margin-top: 7px;
-                        margin-right: 6px;
-                    }
                 }
             }
             .resourceTabs {
@@ -1173,6 +1169,11 @@
                 flex-wrap: wrap;
                 justify-content: flex-start;
                 border-top: 1px solid #555;
+                .extraLinks {
+                    position: absolute;
+                    top: -17px;
+                    right: 8px;
+                }
                 .tabs {
                     display: contents;
                     margin-top: 0;
@@ -2207,12 +2208,12 @@
         border-color: #555;
     }
     
-    .xenOverlay .formOverlay {
+    :is(body, body.Touch) .xenOverlay .formOverlay {
         background-color: #111;
         border-color: #444;
         color: #d3d3d3;
     }
-    .xenOverlay .formOverlay .textCtrl {
+    :is(body, body.Touch) .xenOverlay .formOverlay .textCtrl {
         background-color: #000;
         border-color: #555;
         color: #d3d3d3;
@@ -3197,14 +3198,6 @@
             .mainContainer .mainContent {
                 padding: 0 0 0 7px;
                 margin-right: -1px !important;
-            }
-        }
-        #content.resource_description, #content.resource_updates, #content.resource_reviews, #content.resource_history, #content.thread_view:has(.mainContent > .resourceInfo) {
-            .mainContent .resourceInfo {
-                .primaryLinks .downloadButton .inner {
-                    margin-top: 8px;
-                    margin-right: 0;
-                }
             }
         }
     }
