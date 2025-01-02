@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.6.3
+@version        1.6.4
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -2389,9 +2389,8 @@
         background-color: var(--inner-bg);
         border-color: #555;
         &:first-child {
-            border-top-width: 1px;
-            border-top-style: solid;
-            margin-top: 8px;
+            border-top-width: 0px;
+            margin-top: 0px;
         }
         & when (@oled = 1) {
             background-color: var(--oled-stripe-bg);
@@ -2399,6 +2398,22 @@
         &:nth-child(2n) {
             background-color: var(--inner-bg-dark-l);
         }
+    }
+    #content.resource_author_view {
+        .resourceListItem:first-child {
+            border-top-width: 1px;
+            border-top-style: solid;
+            margin-top: 8px;
+        }
+    }
+    .sectionMain .resourceList:first-child .resourceListItem:first-child {
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+    .sectionMain .resourceList:last-child .resourceListItem:last-child {
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        border-bottom: 0px none;
     }
     .resourceListItem .resourceImage, .resourceListItem .resourceStats {
         background-color: transparent;
