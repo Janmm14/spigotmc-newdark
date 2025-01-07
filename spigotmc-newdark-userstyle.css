@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.6.4
+@version        1.6.5
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -422,6 +422,12 @@
         background-color: black;
         color: #bfbfbf;
         border-color: #444;
+    }
+    .bbCodeEditorContainer textarea.textCtrl {
+        border-radius: 0 6px 0 3px;
+        position: relative;
+        top: -1px;
+        right: -1px;
     }
     #QuickSearch .primaryControls .uix_icon {
         color: var(--orange);
@@ -1142,7 +1148,7 @@
             } 
         }
     }
-    #content.resource_description, #content.resource_updates, #content.resource_reviews, #content.resource_history, #content.thread_view:has(.mainContent > .resourceInfo) {
+    #content.resource_description, #content.resource_field, #content.resource_updates, #content.resource_reviews, #content.resource_history, #content.thread_view:has(.mainContent > .resourceInfo) {
         .mainContainer_noSidebar {
             padding: 0;
         }
@@ -1150,6 +1156,12 @@
             flex-direction: column;
             padding: 0;
             margin: 0 !important;
+            &:has(.resourceInfo) {
+                .quickReply {
+                    margin-left: 16px;
+                    margin-right: 16px;
+                }
+            }
             .resourceInfo {
                 margin: 0;
                 padding: 8px;
@@ -1271,6 +1283,9 @@
             .innerContent {
                 .section {
                     margin: 0;
+                    &:is(blockquote) {
+                        margin: 8px;
+                    }
                     &.updates {
                         .textHeading, li, .moreLink {
                             padding-left: 8px;
@@ -1307,7 +1322,7 @@
                     }
                     
                 }
-                &:has(.pageNavLinkGroup > .linkGroup[style="display: none"]) {
+                &:has(.pageNavLinkGroup > .linkGroup[style="display: none"]):not(>.PageNav) {
                     li.review {
                         &:last-child {
                             border-radius: 0 0 6px 6px;
@@ -1318,6 +1333,10 @@
                     .pageNavLinkGroup {
                         display: none;
                     }
+                }
+                .PageNav {
+                    margin-left: 10px;
+                    margin-right: 10px;
                 }
                 .updateContainer {
                     .textHeading {
@@ -1332,6 +1351,9 @@
                             border-color: #444;
                             margin-bottom: -1px;
                         }
+                    }
+                    .PageNav {
+                        margin-bottom: 3px;
                     }
                 }
                 .dataTable.resourceHistory {
