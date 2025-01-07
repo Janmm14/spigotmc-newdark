@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.6.5
+@version        1.6.6
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -423,11 +423,18 @@
         color: #bfbfbf;
         border-color: #444;
     }
-    .bbCodeEditorContainer textarea.textCtrl {
+    .quickReply .bbCodeEditorContainer textarea.textCtrl {
         border-radius: 0 6px 0 3px;
         position: relative;
         top: -1px;
         right: -1px;
+    }
+    .xenOverlay .bbCodeEditorContainer textarea.textCtrl {
+        border-radius: 0;
+        margin-left: -1px;
+        margin-right: -1px;
+        margin-top: -1px;
+        width: calc(100% + 2px) !important;
     }
     #QuickSearch .primaryControls .uix_icon {
         color: var(--orange);
@@ -2252,6 +2259,20 @@
         margin-top: -1px;
         margin-right: -1px;
         border-top-right-radius: 6px;
+    }
+    #content.thread_reply .redactor_box {
+        border-radius: 6px 6px 0 0;
+        .redactor_toolbar {
+            border-radius: 6px 6px 0 0;
+        }
+    }
+    .xenOverlay .redactor_box {
+        border-top-right-radius: 0;
+        margin: 0;
+        border: 0;
+        .redactor_toolbar {
+            border-top-right-radius: 0;
+        }
     }
     .redactor_box .redactor_smilies .secondaryContent {
         border-color: #444;
