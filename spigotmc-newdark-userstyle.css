@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.6.7
+@version        1.6.8
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -989,13 +989,13 @@
         background-color: var(--inner-bg);
         border-color: #444;
     }
+    .PageNav .pageNavHeader {
+        padding: 0;
+        margin: 0 8px 0 0;
+    }
     .articlePager .PageNav {
         padding: 8px 16px;
         margin: 0;
-        .pageNavHeader {
-            padding: 0;
-            margin: 0 4px 0 0;
-        }
         nav {
             a, .scrollable {
                 margin-bottom: 0;
@@ -1155,7 +1155,174 @@
             } 
         }
     }
-    #content.resource_description, #content.resource_field, #content.resource_updates, #content.resource_reviews, #content.resource_history, #content.thread_view:has(.mainContent > .resourceInfo) {
+    .messageSimpleList.topBorder {
+        border-top-color: #555;
+    }
+    #content:is(.find_new_posts, .find_new_profile_posts, .find_new_resources)
+    {
+        .mainContainer_noSidebar {
+            padding: 0;
+        }
+        &.find_new_posts:not(:has(.pageNavLinkGroup:nth-child(3) > .linkGroup > a:nth-child(2))) .titleBar {
+            display: block;
+        }
+        .mainContent {
+            display: flex;
+            flex-direction: column;
+            > * {
+                order: 15;
+            }
+            > .tabs {
+                order: 0;
+            }
+            > .titleBar {
+                order: 1;
+                margin: 8px 8px 0 8px;
+                display: none;
+            }
+            > .pageNavLinkGroup {
+                margin: 9px 8px 0 8px;
+                .linkGroup a {
+                    padding: 1px 0;
+                }
+                &:nth-child(5) {
+                    margin: 0 8px 8px 8px;
+                }
+            }
+            > .section.discussionList {
+                margin: 8px 0;
+            }
+            .sectionFooter {
+                border-radius: 0;
+            }
+            > form:has(> #ProfilePostList) {
+                margin-bottom: 8px;
+            }
+            > form {
+                margin: 10px 0 8px 0;
+            }
+            ol.resourceList {
+                border-top: 1px solid #555;
+            }
+            #ProfilePostList {
+                padding: 0;
+                > li {
+                    margin: 0;
+                    padding: 8px;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+                ol.messageResponse:has(> li.comment[style*="display:none"]):not(:has(> li[id^="likes"]:where(>*))) {
+                    display: none;
+                }
+            }
+            .tabs {
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+                border: 0 none;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                li {
+                    display: inline-block;
+                    position: relative;
+                    flex-grow: 1;
+                    flex-shrink: 1;
+                    a {
+                        width: 100%;
+                        border-radius: 0;
+                        display: inline-block;
+                        margin: 0;
+                        border-right: 0 none;
+                        border-top: 0 none;
+                        border-bottom: 1px solid #555;
+                        box-sizing: border-box;
+                        text-align: center;
+                        padding-left: 12px;
+                        padding-right: 12px;
+                    }
+                    &:first-child a {
+                        border-left: 0;
+                        border-top-left-radius: 5px;
+                    }
+                    &:last-child a {
+                        border-top-right-radius: 5px;
+                    }
+                    &.active {
+                        &::before,
+                        &::after,
+                        a::before,
+                        a::after {
+                            content:'';
+                            display: block;
+                            position: absolute;
+                            background: transparent;
+                            box-sizing: border-box;
+                            border-width: 0;
+                            border-style: solid;
+                            width: var(--size);
+                            height: var(--size);
+                        }
+                        &::before, &::after {
+                            --size: 8px;
+                            --width: 3px;
+                            z-index: 2;
+                            bottom: calc(1px - var(--width));
+                            border-color: var(--inner-bg);
+                        }
+                        &::before {
+                            left: calc(0px - var(--size) + var(--width));
+                            border-right-width: var(--width);
+                            border-bottom-width: var(--width);
+                            border-bottom-right-radius: 5px;
+                        }
+                        &::after {
+                            right: calc(-1px - var(--size) + var(--width));
+                            border-left-width: var(--width);
+                            border-bottom-width: var(--width);
+                            border-bottom-left-radius: 6px;
+                        }
+                        &:first-child::before,
+                        &:last-child::after,
+                        &:first-child a::before,
+                        &:last-child a::after {
+                            display: none;
+                        }
+                        a {
+                            position: relative;
+                            border-bottom: 0;
+                            background: transparent;
+                            &::before, &::after {
+                                --size: 6px;
+                                --radius: 4px;
+                                z-index: 3;
+                                bottom: 0;
+                                border-color: #555;
+                            }
+                            &::before {
+                                left: calc(0px - var(--size));
+                                border-right-width: 1px;
+                                border-bottom-width: 1px;
+                                border-bottom-right-radius: var(--radius);
+                            }
+                            &::after {
+                                right: calc(0px - var(--size));
+                                border-left-width: 1px;
+                                border-bottom-width: 1px;
+                                border-bottom-left-radius: var(--radius);
+                                zoutline: 1px solid red;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    #content:is(.resource_description, .resource_field, .resource_updates, .resource_reviews, .resource_history), #content.thread_view:has(.mainContent > .resourceInfo) {
         .mainContainer_noSidebar {
             padding: 0;
         }
@@ -2350,6 +2517,10 @@
         & when (@oled = 1) {
             background-color: var(--oled-stripe-bg);
         }
+    }
+    .discussionListItems .unread .title a.unreadLink {
+        margin-top: 2px;
+        left: 2px;
     }
     .discussionList .discussionListItem.sticky {
         background: #1a1a1a;
