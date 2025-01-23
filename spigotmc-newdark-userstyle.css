@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.6.6
+@version        1.6.7
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -1985,13 +1985,24 @@
                     background-color: #127ef9;
                 }
             }
+            span a span {
+                filter: none;
+            }
             span[style="color: #003399;"] {
                 color: hsl(220, 100%, 65%) !important;
             }
+            span[style*="color: #000000;"] {
+                color: #55ff00 !important;
+            }
             background-attachment: local;
             background-color: #000b;
-            --clr-1: rgba(255,255,255,.015);
-            --clr-2: rgba(255,255,255,.1);
+            --clr-1: #040404;
+            --clr-2: #1a1a1a;
+            & when (@oled = 1) {
+            background-color: transparent;
+                --clr-1: rgba(255,255,255,.015);
+                --clr-2: rgba(255,255,255,.1);
+            }
             background-image: -webkit-repeating-linear-gradient(top,var(--clr-1) 0px,var(--clr-1) 26px,var(--clr-2) 26px,var(--clr-2) 52px);
             background-image: -moz-repeating-linear-gradient(top,var(--clr-1) 0px,var(--clr-1) 26px,var(--clr-2) 26px,var(--clr-2) 52px);
             background-image: -ms-repeating-linear-gradient(top,var(--clr-1) 0px,var(--clr-1) 26px,var(--clr-2) 26px,var(--clr-2) 52px);
