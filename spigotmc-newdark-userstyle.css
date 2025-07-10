@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.6.8
+@version        1.6.9
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -77,6 +77,8 @@
     }
 
     body {
+        /* anti cloudflare anti-scrolling */
+        height: initial !important;
         background: black;
         color: #d3d3d3;
     }
@@ -1785,6 +1787,7 @@
         --shine-text: hsl(0, 0%, 100%);
         .thCopyrightNoticeStyle {
             position: relative;
+            display: block;
             line-height: 16px;
         }
         .thCopyrightNoticeStyle::before {
@@ -1800,7 +1803,6 @@
             padding: 5px 9px;
             left: 0;
             top: 20px;
-            width: 100%;
             color: transparent;
             --shine-base: rgba(239,182,28,0);
             --shine-shine: rgba(239,182,28,.35);
@@ -1810,6 +1812,7 @@
             background-size: 200% auto;
 
             animation: shine var(--shine-duration) 0s linear infinite;
+            overflow: hidden;
         }
         .thCopyrightNoticeStyle::after {
             /* text glow */
@@ -1824,7 +1827,6 @@
             padding: 5px 9px;
             left: 0;
             top: 20px;
-            width: 100%;
             border-radius: 4px;
             --shine-base: var(--shine-text);
             --shine-shine: white;
@@ -1850,6 +1852,7 @@
             color: transparent;
             _color: var(--shine-text);
             background-clip: text;
+            overflow: hidden;
         }
     }
     #copyright::after {
@@ -1885,18 +1888,29 @@
     .navigationSideBar {
         > ul {
             background: transparent;
-            border-color: #444;
-            border-bottom-width: 1px;
             border: 0 none;
         }
         > ul > li.section > ul > li a {
             border-width: 1px;
             border-style: none none solid solid;
+            background: var(--inner-bg-dark);
+            &.secondaryContent {
+                background: #333;
+                &:hover {
+                    background: #3a3a3a !important;
+                }
+            }
+        }
+        > ul > li.section > ul > li:first-child a {
+            &.secondaryContent {
+                padding-top: 6px;
+                padding-bottom: 4px;
+            }
         }
         > ul > li.section > ul > li:last-child a {
             border-bottom-left-radius: 6px;
         }
-        > ul > li.section:last-child > ul > li:last-child a {
+        > ul > li.section > ul > li:first-child:last-child a {
             border-top-width: 1px;
             border-top-style: solid;
             border-left-width: 1px;
@@ -1906,14 +1920,17 @@
         }
         h4.heading {
             border-top-left-radius: 6px;
+            background-color: var(--orange-dark);
         }
         .subHeading {
+            color: inherit;
+            background-color: var(--inner-bg-verydark);
             margin-left: 0;
             border-color: #444;
             border-style: solid;
             border-left-width: 1px;
-            border-right-width: 1px;
-            border-right-style: solid;
+            border-right-width: 0px;
+            border-right-style: none;
             border-top-left-radius: 6px;
         }
     }
@@ -2112,6 +2129,63 @@
         background-color: #000;
         border-color: #666;
     }
+    #content.bdmedal_help_medals {
+        .sectionMain.mainContentBlock {
+            > ol.section {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+    li.MedalCategory {
+        .categoryName {
+            margin-top: 10px;
+            padding: 0 5px;
+        }
+        &:first-child .categoryName {
+            margin-top: 5px;
+        }
+        li {
+            background: transparent;
+        }
+        &:last-child li:last-child {
+            border-bottom: 0 none
+        }
+    }
+    #content.help_cookies {
+        .sectionMain.mainContentBlock {
+            > .baseHtml {
+                p {
+                    margin: 0 5px 0 8px;
+                    &:first-child {
+                        margin-top: 8px;
+                    }
+                    &:last-child {
+                        margin-bottom: 8px;
+                    }
+                }
+                h1, h2, h3, h4, h5, h6, h7 {
+                    margin-left: 6px;
+                    padding-left: 2px;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+    #content.help_bb_codes {
+        .sectionMain.mainContentBlock {
+            > ul {
+                margin: 0;
+                > li:last-child {
+                    border-bottom: 0 none;
+                }
+            }
+        }
+    }
+    .bbCode > dl > dd {
+        background: var(--post-bg);
+        border-color: #555;
+    }
     .message:not(.quickReply) .messageText {
         &:has(>.newIndicator) .bbCodeBlock:nth-child(2) {
             margin-top: 0;
@@ -2210,6 +2284,21 @@
     }
     span[style="color: #660000"] {
         color: #a00 !important;
+    }
+    table.ctaBbcodeTable {
+        &:has(+br) {
+            margin-bottom: 0;
+        }
+        tr:hover {
+            background-color: var(--inner-bg-dark);
+        }
+        td {
+            border-color: #555;
+            &.ctaBbcodeTableCellHeader {
+                border-color: #555;
+                background-color: var(--inner-bg-verydark);
+            }
+        }
     }
     img[data-url="http://i.imgur.com/dKF4pZx.png"],
     img[data-url="http://i.imgur.com/sVTy6M0.png"],
@@ -3138,6 +3227,69 @@
         dd {
             color: inherit;
         }
+    }
+    
+    table.dataTable.smilieList {
+        text-align: initial;
+        margin-top: 0;
+        margin-bottom: 6px;
+        border-radius: 6px 6px 0 0;
+        overflow: hidden;
+        th {
+            border-top: 0 none;
+        }
+    }
+    #content.help_smilies .mainContentBlock.sectionMain {
+        text-align: center;
+        padding-bottom: 5px;
+    }
+    .smilieList td > span {
+        display: inline-block;
+        height: 18px;
+        line-height: 18px;
+        min-width: 16px;
+        padding: 0 1px;
+        text-align: center;
+        zbackground-color: #FFFFFF;
+        background-color: var(--inner-bg-verydark);
+        
+        zborder: 1px solid rgb(217, 217, 217);
+        border: 1px solid #555;
+        
+        zcolor: rgb(144, 142, 142);
+        zcolor: inherit;
+
+        border-radius: 5px;
+        font-size: 11px;
+        cursor: default;
+        &:hover {
+            background-color: var(--inner-bg-dark);
+            border-color: #666;
+            color: inherit;
+        }
+    }
+    .smilieList .smilieText {
+        display: inline-block;
+        background: transparent;
+        border: 0 none;
+        color: inherit;
+        border-radius: 0;
+        width: initial;
+        height: initial;
+        padding: 0;
+        &:hover {
+            background: transparent;
+            border-color: #666;
+            color: inherit;
+        }
+    }
+    .smilieList .smilieTextRotator90:hover .smilieText {
+        position: relative;
+        left: 1px;
+    }
+    .smilieList .smilieTextRotator270:hover .smilieText {
+        position: relative;
+        left: -1px;
     }
 
     /* SpigotSearchEngine */
