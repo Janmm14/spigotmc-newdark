@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           SpigotMC NewDark
 @namespace      github.com/Janmm14/spigotmc-newdark
-@version        1.6.9
+@version        1.6.10
 @description    SpigotMC.org NewDark mode userstyle. https://userstyles.world/style/4051/spigotmc-newdark
 @preprocessor   less
 @author         Janmm14
@@ -459,7 +459,7 @@
     }
     #QuickSearch .button:not(.primary) {
         background-color: #333;
-        color: #eee;
+        color: #eee !important;
     }
     .navTabs .navTab.PopupClosed {
         .navLink {
@@ -2123,7 +2123,7 @@
     
     .button {
         background-color: #555;
-        color: #d9d9d9;
+        color: #d9d9d9 !important;
     }
     .hasJs .bbCodeSpoilerText {
         background-color: #000;
